@@ -1,8 +1,11 @@
 from ._internal import JsonDeserializable
 
+
 class PuzzleModePerf(JsonDeserializable):
     """
     Puzzle mode performance
+
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/PuzzleModePerf.yaml
     """
     @classmethod
     def de_json(cls, json_string):

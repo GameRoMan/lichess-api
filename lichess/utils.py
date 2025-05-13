@@ -1,0 +1,133 @@
+import dateutil.parser
+
+from datetime import datetime, timezone
+from typing import Any, Callable, TypeVar, cast
+
+T = TypeVar("T")
+U = TypeVar("U")
+
+
+def to_milliseconds(dt: datetime):
+    """Return the milliseconds between the given datetime and the epoch."""
+    return int(dt.timestamp() * 1000)
+
+
+def datetime_from_seconds(ts: float):
+    """Return the datetime for the given seconds since the epoch.
+
+    UTC is assumed. The returned datetime is timezone aware.
+    """
+    return datetime.fromtimestamp(ts, timezone.utc)
+
+
+def datetime_from_milliseconds(milliseconds: float):
+    """Return the datetime for the given milliseconds since the epoch.
+
+    UTC is assumed. The returned datetime is timezone aware.
+    """
+    return datetime_from_seconds(milliseconds / 1000)
+
+
+def datetime_from_str(dt_str: str):
+    """Convert the time in a string to a datetime.
+
+    UTC is assumed. The returned datetime is timezone aware. The format must match ISO
+    8601.
+    """
+    dt = dateutil.parser.isoparse(dt_str)
+    return dt.replace(tzinfo=timezone.utc)
+
+
+def datetime_from_str_or_millisesconds(millis_or_str: str | int):
+    """Convert a string or int to a datetime.
+
+    UTC is assumed. The returned datetime is timezone aware. If the input is a string,
+    the format must match ISO 8601.
+    """
+    if isinstance(millis_or_str, int):
+        return datetime_from_milliseconds(millis_or_str)
+    return datetime_from_str(millis_or_str)
+
+
+def inner(
+    func: Callable[[T], U], *keys: str
+) -> Callable[[dict[str, T]], dict[str, T | U]]:
+    def convert(data: dict[str, T]) -> dict[str, T | U]:
+        result = cast(dict[str, T | U], data)
+        for k in keys:
+            try:
+                result[k] = func(data[k])
+            except KeyError:
+                pass  # normal for keys to not be present sometimes
+        return result
+
+    return convert
+
+
+def listing(func: Callable[[T], U]) -> Callable[[list[T]], list[U]]:
+    def convert(items: list[T]):
+        return [func(item) for item in items]
+
+    return convert
+
+
+def noop(arg: T) -> T:
+    return arg
+
+
+def build_adapter(mapper: dict[str, str], sep: str = "."):
+    """Build a data adapter.
+
+    Uses a map to pull values from an object and assign them to keys.
+    For example:
+
+    .. code-block:: python
+
+        >>> mapping = {
+        ...   'broadcast_id': 'broadcast.id',
+        ...   'slug': 'broadcast.slug',
+        ...   'name': 'broadcast.name',
+        ...   'description': 'broadcast.description',
+        ...   'syncUrl': 'broadcast.sync.url',
+        ... }
+
+        >>> cast = {'broadcast': {'id': 'WxOb8OUT',
+        ...   'slug': 'test-tourney',
+        ...   'name': 'Test Tourney',
+        ...   'description': 'Just a test',
+        ...   'ownerId': 'rhgrant10',
+        ...   'sync': {'ongoing': False, 'log': [], 'url': None}},
+        ...  'url': 'https://lichess.org/broadcast/test-tourney/WxOb8OUT'}
+
+        >>> adapt = build_adapter(mapping)
+        >>> adapt(cast)
+        {'broadcast_id': 'WxOb8OUT',
+        'slug': 'test-tourney',
+        'name': 'Test Tourney',
+        'description': 'Just a test',
+        'syncUrl': None}
+
+    :param dict mapper: map of keys to their location in an object
+    :param str sep: nested key delimiter
+    :return: adapted data
+    :rtype: dict
+    """
+
+    def get(data: dict[str, Any], location: str) -> dict[str, Any]:
+        for key in location.split(sep):
+            data = data[key]
+        return data
+
+    def adapter(
+        data: dict[str, Any], default: Any = None, fill: bool = False
+    ) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, loc in mapper.items():
+            try:
+                result[key] = get(data, loc)
+            except KeyError:
+                if fill:
+                    result[key] = default
+        return result
+
+    return adapter

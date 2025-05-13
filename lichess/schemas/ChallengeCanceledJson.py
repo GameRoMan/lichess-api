@@ -1,11 +1,11 @@
 from ._internal import JsonDeserializable
 
 
-class PlayTime(JsonDeserializable):
+class ChallengeCanceledJson(JsonDeserializable):
     """
-    Play time
+    ChallengeCanceledJson
 
-    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/PlayTime.yaml
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/ChallengeCanceledJson.yaml
     """
     @classmethod
     def de_json(cls, json_string):
@@ -13,6 +13,5 @@ class PlayTime(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, total: int, tv: int):
-        self.total = total
-        self.tv = tv
+    def __init__(self, id: str):
+        self.id = id

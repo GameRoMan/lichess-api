@@ -1,0 +1,22 @@
+from typing import Literal
+
+from ._internal import JsonDeserializable
+
+from .ChallengeJson import ChallengeJson
+
+
+class ChallengeEvent(JsonDeserializable):
+    """
+    ChallengeEvent
+
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/ChallengeEvent.yaml
+    """
+    @classmethod
+    def de_json(cls, json_string: str | dict | None):
+        if json_string is None: return None
+        obj = cls.check_json(json_string, dict_copy=False)
+        return cls(**obj)
+
+    def __init__(self, type: Literal['challenge'], challenge: ChallengeJson, **kwargs):
+        self.type: Literal['challenge'] = type
+        self.challenge = challenge

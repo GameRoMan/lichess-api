@@ -1,8 +1,11 @@
 from ._internal import JsonDeserializable
 
+
 class Perf(JsonDeserializable):
     """
     Performance
+
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/Perf.yaml
     """
     @classmethod
     def de_json(cls, json_string):

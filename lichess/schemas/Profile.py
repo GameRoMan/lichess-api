@@ -1,8 +1,11 @@
 from ._internal import JsonDeserializable
 
+
 class Profile(JsonDeserializable):
     """
     Profile
+
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/Profile.yaml
     """
     @classmethod
     def de_json(cls, json_string):

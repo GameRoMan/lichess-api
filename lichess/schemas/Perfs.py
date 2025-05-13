@@ -7,6 +7,8 @@ from .PuzzleModePerf import PuzzleModePerf
 class Perfs(JsonDeserializable):
     """
     Performances
+
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/Perfs.yaml
     """
     @classmethod
     def de_json(cls, json_string):

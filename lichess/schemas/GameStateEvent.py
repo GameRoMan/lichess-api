@@ -1,11 +1,15 @@
 from typing import Literal
 
 from ._internal import JsonDeserializable
+
 from .GameStatus import GameStatus
 
-class Profile(JsonDeserializable):
+
+class GameStateEvent(JsonDeserializable):
     """
     GameState event
+
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/GameStateEvent.yaml
     """
     @classmethod
     def de_json(cls, json_string):
