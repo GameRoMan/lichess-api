@@ -5,7 +5,7 @@ from .VariantKey import VariantKey
 
 class Variant(JsonDeserializable):
     """
-    Puzzle mode performance
+    Variant
 
     See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/Variant.yaml
     """
