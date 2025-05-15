@@ -11,12 +11,16 @@ class ChallengeEvent(JsonDeserializable):
 
     See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/ChallengeEvent.yaml
     """
+
     @classmethod
     def de_json(cls, json_string):
-        if json_string is None: return None
-        obj = cls.check_json(json_string, dict_copy=False)
+        if json_string is None:
+            return None
+        obj = cls.check_json(json_string)
+        if "challenge" in obj:
+            obj["challenge"] = ChallengeJson.de_json(obj.get("challenge"))
         return cls(**obj)
 
-    def __init__(self, type: Literal['challenge'], challenge: ChallengeJson, **kwargs):
-        self.type: Literal['challenge'] = type
+    def __init__(self, type: Literal["challenge"], challenge: ChallengeJson):
+        self.type: Literal["challenge"] = type
         self.challenge = challenge

@@ -6,24 +6,21 @@ from ..ChallengeEvent import ChallengeEvent
 from ..ChallengeCanceledEvent import ChallengeCanceledEvent
 from ..ChallengeDeclinedEvent import ChallengeDeclinedEvent
 
-import json
 
 class ApiStreamEvent(JsonDeserializable):
     @classmethod
-    def de_json(cls, json_string):
-        if json_string is None: return None
+    def de_json(cls, json_string: dict):
         obj = cls.check_json(json_string, dict_copy=False)
-        print(json.dumps(obj, indent=2))
-        match json_string['type']:
-            case 'gameStart':
+        match json_string["type"]:
+            case "gameStart":
                 return GameStartEvent.de_json(obj)
-            case 'gameFinish':
+            case "gameFinish":
                 return GameFinishEvent.de_json(obj)
-            case 'challenge':
+            case "challenge":
                 return ChallengeEvent.de_json(obj)
-            case 'challengeCanceled':
+            case "challengeCanceled":
                 return ChallengeCanceledEvent.de_json(obj)
-            case 'challengeDeclined':
+            case "challengeDeclined":
                 return ChallengeDeclinedEvent.de_json(obj)
             case _:
-                raise Exception('Unkown Event Type')
+                raise Exception("Unkown Event Type")

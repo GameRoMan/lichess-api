@@ -27,7 +27,7 @@ CONNECT_TIMEOUT = 15
 READ_TIMEOUT = 30
 
 
-logger = logging.getLogger('Lichess')
+logger = logging.getLogger("Lichess")
 
 T = TypeVar("T")
 U = TypeVar("U")
@@ -120,8 +120,7 @@ class Requestor(Generic[T]):
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
         **kwargs: Any,
-    ) -> U:
-        ...
+    ) -> U: ...
 
     @overload
     def get(
@@ -135,8 +134,7 @@ class Requestor(Generic[T]):
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
         **kwargs: Any,
-    ) -> Iterator[U]:
-        ...
+    ) -> Iterator[U]: ...
 
     @overload
     def get(
@@ -150,8 +148,7 @@ class Requestor(Generic[T]):
         fmt: None = None,
         converter: Converter[T] = utils.noop,
         **kwargs: Any,
-    ) -> T:
-        ...
+    ) -> T: ...
 
     @overload
     def get(
@@ -165,8 +162,7 @@ class Requestor(Generic[T]):
         fmt: None = None,
         converter: Converter[T] = utils.noop,
         **kwargs: Any,
-    ) -> Iterator[T]:
-        ...
+    ) -> Iterator[T]: ...
 
     def get(
         self,
@@ -205,8 +201,7 @@ class Requestor(Generic[T]):
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
         **kwargs: Any,
-    ) -> U:
-        ...
+    ) -> U: ...
 
     @overload
     def post(
@@ -220,8 +215,7 @@ class Requestor(Generic[T]):
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
         **kwargs: Any,
-    ) -> Iterator[U]:
-        ...
+    ) -> Iterator[U]: ...
 
     @overload
     def post(
@@ -235,8 +229,7 @@ class Requestor(Generic[T]):
         fmt: None = None,
         converter: Converter[T] = utils.noop,
         **kwargs: Any,
-    ) -> T:
-        ...
+    ) -> T: ...
 
     @overload
     def post(
@@ -250,8 +243,7 @@ class Requestor(Generic[T]):
         fmt: None = None,
         converter: Converter[T] = utils.noop,
         **kwargs: Any,
-    ) -> Iterator[T]:
-        ...
+    ) -> Iterator[T]: ...
 
     def post(
         self,
@@ -291,45 +283,6 @@ class TokenSession(requests.Session):
         self.headers = {"Authorization": f"Bearer {token}"}
 
 
-
-def _make_request(session: TokenSession, api_path: LiteralString, method='get', params: dict | None = None, timeout: int | float | None = None):
-    raise Exception('DO NOT USE THIS METHOD')
-    """
-    Makes a request to the Lichess API.
-
-    :param session: Session capable of Lichess Personal API access token authentication
-    :type session: `TokenSession`
-    :param api_path: Api path. for example "/api/account".
-    :type api_path: `str`
-    :param method: HTTP method to be used. Defaults to 'get'.
-    :type method: `str`
-    :param params: Optional parameters. Should be a dictionary with key-value pairs.
-    :type method: `dict`
-    :return: The result parsed to a JSON dictionary.
-    """
-
-    request_url = f"{API_URL}{api_path}"
-
-    read_timeout = READ_TIMEOUT
-    connect_timeout = CONNECT_TIMEOUT
-
-    if timeout:
-        read_timeout = timeout
-        connect_timeout = read_timeout
-
-    params = params or None  # Set params to None if empty
-    print('xxx')
-    result = session.request(
-        method, request_url, params=params,
-        timeout=(connect_timeout, read_timeout)
-    )
-    print(f"{result = }")
-
-    json_result = _check_result(api_path, result)
-    if json_result:
-        return json_result['result']
-
-
 def _check_result(api_path: LiteralString, result: requests.Response):
     """
     Checks whether `result` is a valid API response.
@@ -352,7 +305,4 @@ def _check_result(api_path: LiteralString, result: requests.Response):
         else:
             raise exceptions.ApiInvalidJSONException(api_path, result)
     else:
-        if not result_json['ok']:
-            raise exceptions.ApiLichessException(api_path, result, result_json)
-
         return result_json

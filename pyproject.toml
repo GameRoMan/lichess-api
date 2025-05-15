@@ -26,3 +26,7 @@ Homepage = "https://github.com/gameroman/lichess-api"
 
 [tool.hatch.build.targets.wheel]
 packages = ["lichess"]
+
+[tool.black]
+line-length = 120
+target-version = ["py310", "py311", "py312", "py313"]

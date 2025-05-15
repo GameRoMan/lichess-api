@@ -60,7 +60,7 @@ class JsonDeserializable:
         raise NotImplementedError
 
     @staticmethod
-    def check_json(json_type: str | dict, dict_copy = True):
+    def check_json(json_type: str | dict, dict_copy=True):
         """
         Checks whether `json_type` is a dict or a string. If it is already a `dict`, it is returned as-is.
         If it is not, it is converted to a dict by means of `json.loads(json_type)`
@@ -79,10 +79,7 @@ class JsonDeserializable:
             raise ValueError("json_type should be a json dict or string.")
 
     def __str__(self):
-        d = {
-            x: y.__dict__ if hasattr(y, '__dict__') else y
-            for x, y in self.__dict__.items()
-        }
+        d = {x: y.__dict__ if hasattr(y, "__dict__") else y for x, y in self.__dict__.items()}
         return str(d)
 
 

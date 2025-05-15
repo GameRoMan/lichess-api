@@ -70,9 +70,7 @@ class JsonHandler(FormatHandler[Dict[str, Any]]):
     :type decoder: :class:`json.JSONDecoder`
     """
 
-    def __init__(
-        self, mime_type: str, decoder: Type[json.JSONDecoder] = json.JSONDecoder
-    ):
+    def __init__(self, mime_type: str, decoder: Type[json.JSONDecoder] = json.JSONDecoder):
         super().__init__(mime_type=mime_type)
         self.decoder = decoder
 

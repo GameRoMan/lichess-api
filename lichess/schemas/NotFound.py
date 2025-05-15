@@ -1,11 +1,11 @@
 from ._internal import JsonDeserializable
 
 
-class Clock(JsonDeserializable):
+class NotFound(JsonDeserializable):
     """
-    Clock
+    NotFound
 
-    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/Clock.yaml
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/NotFound.yaml
     """
 
     @classmethod
@@ -15,6 +15,5 @@ class Clock(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, limit: int, increment: int):
-        self.limit = limit
-        self.increment = increment
+    def __init__(self, error: str):
+        self.error = error

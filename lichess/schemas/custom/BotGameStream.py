@@ -9,16 +9,17 @@ from ..OpponentGone import OpponentGone
 class BotGameStream(JsonDeserializable):
     @classmethod
     def de_json(cls, json_string):
-        if json_string is None: return None
+        if json_string is None:
+            return None
         obj = cls.check_json(json_string, dict_copy=False)
-        match json_string['type']:
-            case 'gameFull':
+        match json_string["type"]:
+            case "gameFull":
                 return GameFullEvent.de_json(obj)
-            case 'gameState':
+            case "gameState":
                 return GameStateEvent.de_json(obj)
-            case 'chatLine':
+            case "chatLine":
                 return ChatLineEvent.de_json(obj)
-            case 'opponentGone':
+            case "opponentGone":
                 return OpponentGone.de_json(obj)
             case _:
-                raise Exception('Unkown Event Type')
+                raise Exception("Unkown Event Type")

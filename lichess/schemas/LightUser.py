@@ -10,9 +10,11 @@ class LightUser(JsonDeserializable):
 
     See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/LightUser.yaml
     """
+
     @classmethod
     def de_json(cls, json_string):
-        if json_string is None: return None
+        if json_string is None:
+            return None
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
@@ -20,5 +22,5 @@ class LightUser(JsonDeserializable):
         self.id = id
         self.name = name
         self.flair = flair
-        self.title = title
+        self.title: Title = title
         self.patron = patron

@@ -49,9 +49,7 @@ def datetime_from_str_or_millisesconds(millis_or_str: str | int):
     return datetime_from_str(millis_or_str)
 
 
-def inner(
-    func: Callable[[T], U], *keys: str
-) -> Callable[[dict[str, T]], dict[str, T | U]]:
+def inner(func: Callable[[T], U], *keys: str) -> Callable[[dict[str, T]], dict[str, T | U]]:
     def convert(data: dict[str, T]) -> dict[str, T | U]:
         result = cast(dict[str, T | U], data)
         for k in keys:
@@ -118,9 +116,7 @@ def build_adapter(mapper: dict[str, str], sep: str = "."):
             data = data[key]
         return data
 
-    def adapter(
-        data: dict[str, Any], default: Any = None, fill: bool = False
-    ) -> dict[str, Any]:
+    def adapter(data: dict[str, Any], default: Any = None, fill: bool = False) -> dict[str, Any]:
         result: dict[str, Any] = {}
         for key, loc in mapper.items():
             try:

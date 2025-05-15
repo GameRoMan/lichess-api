@@ -24,7 +24,7 @@ class ApiHTTPException(ApiException):
     def __init__(self, function_name: str, result: requests.Response):
         status_code = result.status_code
         reason = result.reason
-        response_body = result.text.encode('utf8')
+        response_body = result.text.encode("utf8")
         message = f"The server returned HTTP {status_code} {reason}. Response body:\n[{response_body}]"
 
         super(ApiHTTPException, self).__init__(message, function_name, result)
@@ -37,7 +37,7 @@ class ApiInvalidJSONException(ApiException):
     """
 
     def __init__(self, function_name: str, result: requests.Response):
-        response_body = result.text.encode('utf8')
+        response_body = result.text.encode("utf8")
         message = f"The server returned an invalid JSON response. Response body:\n[{response_body}]"
 
         super(ApiInvalidJSONException, self).__init__(message, function_name, result)
@@ -49,8 +49,8 @@ class ApiLichessException(ApiException):
     """
 
     def __init__(self, function_name: str, result: requests.Response, result_json):
-        error_code = result_json['error_code']
-        description = result_json['description']
+        error_code = result_json["error_code"]
+        description = result_json["description"]
         message = f"Error code: {error_code}. Description: {description}"
 
         super(ApiLichessException, self).__init__(message, function_name, result)

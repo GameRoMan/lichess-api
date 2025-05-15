@@ -9,11 +9,11 @@ from .Speed import Speed
 from .TimeControl import TimeControl
 
 
-class ChallengeJson(JsonDeserializable):
+class ChallengeDeclinedJson(JsonDeserializable):
     """
-    Challenge json
+    ChallengeDeclinedJson
 
-    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/ChallengeJson.yaml
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/ChallengeDeclinedJson.yaml
     """
 
     @classmethod
@@ -47,6 +47,20 @@ class ChallengeJson(JsonDeserializable):
         perf: object,
         direction: Literal["in", "out"],
         initialFen: str,
+        declineReason: str,
+        declineReasonKey: Literal[
+            "generic",
+            "later",
+            "tooFast",
+            "tooSlow",
+            "timeControl",
+            "rated",
+            "casual",
+            "standard",
+            "variant",
+            "noBot",
+            "onlyBot",
+        ],
     ):
         self.id = id
         self.url = url
@@ -55,10 +69,12 @@ class ChallengeJson(JsonDeserializable):
         self.destUser = destUser
         self.variant = variant
         self.rated = rated
-        self.speed = speed
+        self.speed: Speed = speed
         self.timeControl = timeControl
         self.color: Literal["white", "black", "random"] = color
         self.finalColor: Literal["white", "black"] = finalColor
         self.perf = perf
         self.direction: Literal["in", "out"] = direction
         self.initialFen = initialFen
+        self.declineReason = declineReason
+        self.declineReasonKey = declineReasonKey

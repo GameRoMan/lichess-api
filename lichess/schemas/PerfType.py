@@ -6,18 +6,18 @@ from typing import Literal
 
 
 PerfType = Literal[
-    'ultraBullet',
-    'bullet',
-    'blitz',
-    'rapid',
-    'classical',
-    'correspondence',
-    'chess960',
-    'crazyhouse',
-    'antichess',
-    'atomic',
-    'horde',
-    'kingOfTheHill',
-    'racingKings',
-    'threeCheck'
+    "ultraBullet",
+    "bullet",
+    "blitz",
+    "rapid",
+    "classical",
+    "correspondence",
+    "chess960",
+    "crazyhouse",
+    "antichess",
+    "atomic",
+    "horde",
+    "kingOfTheHill",
+    "racingKings",
+    "threeCheck",
 ]

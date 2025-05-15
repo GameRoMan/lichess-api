@@ -6,14 +6,14 @@ from typing import Literal
 
 
 VariantKey = Literal[
-    'standard',
-    'chess960',
-    'crazyhouse',
-    'antichess',
-    'atomic',
-    'horde',
-    'kingOfTheHill',
-    'racingKings',
-    'threeCheck',
-    'fromPosition'
+    "standard",
+    "chess960",
+    "crazyhouse",
+    "antichess",
+    "atomic",
+    "horde",
+    "kingOfTheHill",
+    "racingKings",
+    "threeCheck",
+    "fromPosition",
 ]

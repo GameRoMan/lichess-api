@@ -1,8 +1,11 @@
+from typing import Literal
+
 from . import schemas
 
 from .schemas.custom.ApiStreamEvent import ApiStreamEvent
+from .schemas.custom.BotGameStream import BotGameStream
 
-from .session import TokenSession, Requestor, _make_request
+from .session import TokenSession, Requestor
 
 from .formats import JSON
 
@@ -19,7 +22,7 @@ class LichessClient:
     :type token: `str`
     """
 
-    def __init__(self, token: str, base_url = API_URL):
+    def __init__(self, token: str, base_url=API_URL):
         self.token = token
         self.session = TokenSession(token)
         self._requestor = Requestor(self.session, base_url or API_URL, default_fmt=JSON)
@@ -31,16 +34,86 @@ class LichessClient:
         :return: stream of incoming events
         """
         path = "/api/stream/event"
-        
+
         events = self._requestor.get(path, stream=True)
 
         return [ApiStreamEvent.de_json(event) for event in events]
 
+    def stream_bot_game_state(self, game_id: str):
+        """Get the stream of events for a bot game. See https://lichess.org/api#tag/Bot/operation/botGameStream
 
+        :param game_id: ID of a game
+        :type game_id: `str`
+        :return: iterator over game states
+        """
+        path = f"/api/bot/game/stream/{game_id}"
 
+        events = self._requestor.get(path, stream=True)
 
+        return [BotGameStream.de_json(event) for event in events]
 
+    def accept_challenge(self, challenge_id: str):
+        """Accept an incoming challenge.
 
+        :param challenge_id: ID of a challenge
+        :type challenge_id: `str`
+        """
+        path = f"/api/challenge/{challenge_id}/accept"
+
+        self._requestor.post(path)
+
+    def decline_challenge(
+        self,
+        challenge_id: str,
+        reason: Literal[
+            "generic",
+            "later",
+            "tooFast",
+            "tooSlow",
+            "timeControl",
+            "rated",
+            "casual",
+            "standard",
+            "variant",
+            "noBot",
+            "onlyBot",
+        ] = "generic",
+    ):
+        """Decline an incoming challenge.
+
+        :param challenge_id: ID of a challenge
+        :param reason: reason for declining challenge
+        """
+        path = f"/api/challenge/{challenge_id}/decline"
+        payload = {"reason": reason}
+
+        self._requestor.post(path, json=payload)
+
+    def bot_write_game_chat_message(self, game_id: str, room: Literal["player", "spectator"], text: str):
+        """Post a message in a bot game.
+
+        :param game_id: ID of a game
+        :type game_id: `str`
+        :param room: "player" or "spectator"
+        :param text: text of the message
+        :type text: `str`
+        """
+        path = f"/api/bot/game/{game_id}/chat"
+
+        payload = {"room": room, "text": text}
+
+        self._requestor.post(path, json=payload)
+
+    def make_bot_move(self, game_id: str, move: str):
+        """Make a move in a bot game.
+
+        :param game_id: ID of a game
+        :type game_id: `str`
+        :param move: The move to play, in UCI format
+        """
+        path = f"/api/bot/game/{game_id}/move/{move}"
+
+        self._requestor.post(path)
 
 
 # class FmtClient(BaseClient):

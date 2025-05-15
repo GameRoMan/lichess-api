@@ -1,11 +1,11 @@
 from ._internal import JsonDeserializable
 
 
-class Error(JsonDeserializable):
+class OAuthError(JsonDeserializable):
     """
-    Error
+    OAuthError
 
-    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/Error.yaml
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/OAuthError.yaml
     """
 
     @classmethod
@@ -15,5 +15,6 @@ class Error(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, error: str):
+    def __init__(self, error: str, error_description: str):
         self.error = error
+        self.error_description = error_description
