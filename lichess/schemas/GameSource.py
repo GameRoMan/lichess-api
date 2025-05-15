@@ -6,5 +6,16 @@ from typing import Literal
 
 
 GameSource = Literal[
-    "lobby", "friend", "ai", "api", "tournament", "position", "import", "importlive", "simul", "relay", "pool", "swiss"
+    "lobby",
+    "friend",
+    "ai",
+    "api",
+    "tournament",
+    "position",
+    "import",
+    "importlive",
+    "simul",
+    "relay",
+    "pool",
+    "swiss",
 ]
