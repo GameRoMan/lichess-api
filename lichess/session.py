@@ -1,14 +1,4 @@
-from typing import (
-    Any,
-    Callable,
-    Generic,
-    Iterator,
-    Literal,
-    LiteralString,
-    Mapping,
-    TypeVar,
-    overload,
-)
+from typing import Any, Callable, Generic, Iterator, Literal, LiteralString, Mapping, TypeVar, overload
 
 import requests
 

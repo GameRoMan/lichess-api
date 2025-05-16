@@ -83,8 +83,4 @@ class JsonDeserializable:
         return str(d)
 
 
-__all__ = [
-    "JsonSerializable",
-    "Dictionaryable",
-    "JsonDeserializable",
-]
+__all__ = ["JsonSerializable", "Dictionaryable", "JsonDeserializable"]

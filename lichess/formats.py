@@ -25,10 +25,7 @@ class FormatHandler(Generic[T]):
         self.headers = {"Accept": mime_type}
 
     def handle(
-        self,
-        response: Response,
-        is_stream: bool,
-        converter: Callable[[T], T] = utils.noop,
+        self, response: Response, is_stream: bool, converter: Callable[[T], T] = utils.noop
     ) -> T | Iterator[T]:
         """Handle the response by returning the data.
 
