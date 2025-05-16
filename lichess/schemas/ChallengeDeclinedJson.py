@@ -45,8 +45,6 @@ class ChallengeDeclinedJson(JsonDeserializable):
         color: Literal["white", "black", "random"],
         finalColor: Literal["white", "black"],
         perf: object,
-        direction: Literal["in", "out"],
-        initialFen: str,
         declineReason: str,
         declineReasonKey: Literal[
             "generic",
@@ -61,6 +59,8 @@ class ChallengeDeclinedJson(JsonDeserializable):
             "noBot",
             "onlyBot",
         ],
+        direction: Literal["in", "out"] | None = None,
+        initialFen: str | None = None,
         **kwargs,
     ):
         self.id = id
@@ -75,7 +75,7 @@ class ChallengeDeclinedJson(JsonDeserializable):
         self.color: Literal["white", "black", "random"] = color
         self.finalColor: Literal["white", "black"] = finalColor
         self.perf = perf
-        self.direction: Literal["in", "out"] = direction
+        self.direction: Literal["in", "out"] | None = direction
         self.initialFen = initialFen
         self.declineReason = declineReason
         self.declineReasonKey = declineReasonKey

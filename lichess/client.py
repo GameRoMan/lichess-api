@@ -37,7 +37,8 @@ class LichessClient:
 
         events = self._requestor.get(path, stream=True)
 
-        return [ApiStreamEvent.de_json(event) for event in events]
+        for event in events:
+            yield ApiStreamEvent.de_json(event)
 
     def stream_bot_game_state(self, game_id: str):
         """Get the stream of events for a bot game. See https://lichess.org/api#tag/Bot/operation/botGameStream
@@ -50,7 +51,8 @@ class LichessClient:
 
         events = self._requestor.get(path, stream=True)
 
-        return [BotGameStream.de_json(event) for event in events]
+        for event in events:
+            yield BotGameStream.de_json(event)
 
     def accept_challenge(self, challenge_id: str):
         """Accept an incoming challenge.
