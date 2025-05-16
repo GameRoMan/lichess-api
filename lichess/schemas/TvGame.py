@@ -1,3 +1,5 @@
+from typing import Literal
+
 from ._internal import JsonDeserializable
 
 from .LightUser import LightUser
@@ -19,8 +21,8 @@ class TvGame(JsonDeserializable):
             obj["user"] = LightUser.de_json(obj.get("user"))
         return cls(**obj)
 
-    def __init__(self, user: LightUser, rating: int, gameId: str, color: str):
+    def __init__(self, user: LightUser, rating: int, gameId: str, color: Literal["white", "black"], **kwargs):
         self.user = user
         self.rating = rating
         self.gameId = gameId
-        self.color = color
+        self.color: Literal["white", "black"] = color

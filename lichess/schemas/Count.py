@@ -30,6 +30,7 @@ class Count(JsonDeserializable):
         playing: int,
         import_: int,
         me: int,
+        **kwargs,
     ):
         self.all = all
         self.rated = rated

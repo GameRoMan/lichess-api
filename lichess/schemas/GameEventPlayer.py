@@ -15,7 +15,9 @@ class GameEventPlayer(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, aiLevel: int, id: str, name: str, title: str | None, rating: int, provisional: bool):
+    def __init__(
+        self, aiLevel: int, id: str, name: str, title: str | None, rating: int, provisional: bool, **kwargs
+    ):
         self.aiLevel = aiLevel
         self.id = id
         self.name = name

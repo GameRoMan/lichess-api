@@ -5,6 +5,7 @@ from ._internal import JsonDeserializable
 from .GameSource import GameSource
 from .GameStatus import GameStatus
 from .Speed import Speed
+from .GameCompat import GameCompat
 
 
 class GameEventInfo(JsonDeserializable):
@@ -38,8 +39,9 @@ class GameEventInfo(JsonDeserializable):
         opponent: object,
         isMyTurn: bool,
         secondsLeft: int,
-        compat: object,
+        compat: GameCompat,
         id: str,
+        **kwargs,
     ):
         self.fullId = fullId
         self.gameId = gameId
@@ -48,12 +50,12 @@ class GameEventInfo(JsonDeserializable):
         self.lastMove = lastMove
         self.source: GameSource = source
         self.status = status
-        self.variant = (variant,)
+        self.variant = variant
         self.speed: Speed = speed
         self.perf = perf
         self.rated = rated
         self.hasMoved = hasMoved
-        self.opponent = (opponent,)
+        self.opponent = opponent
         self.isMyTurn = isMyTurn
         self.secondsLeft = secondsLeft
         self.compat = compat

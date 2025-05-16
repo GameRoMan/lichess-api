@@ -17,7 +17,7 @@ class Variant(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, key: VariantKey, name: str, short: str):
+    def __init__(self, key: VariantKey, name: str, short: str, **kwargs):
         self.key: VariantKey = key
         self.name = name
         self.short = short

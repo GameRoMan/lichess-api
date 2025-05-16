@@ -21,6 +21,6 @@ class ChallengeCanceledEvent(JsonDeserializable):
             obj["challenge"] = ChallengeJson.de_json(obj.get("challenge"))
         return cls(**obj)
 
-    def __init__(self, type: Literal["challengeCanceled"], challenge: ChallengeJson):
+    def __init__(self, type: Literal["challengeCanceled"], challenge: ChallengeJson, **kwargs):
         self.type: Literal["challengeCanceled"] = type
         self.challenge = challenge

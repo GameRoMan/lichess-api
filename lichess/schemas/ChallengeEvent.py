@@ -3,6 +3,7 @@ from typing import Literal
 from ._internal import JsonDeserializable
 
 from .ChallengeJson import ChallengeJson
+from .GameCompat import GameCompat
 
 
 class ChallengeEvent(JsonDeserializable):
@@ -21,6 +22,7 @@ class ChallengeEvent(JsonDeserializable):
             obj["challenge"] = ChallengeJson.de_json(obj.get("challenge"))
         return cls(**obj)
 
-    def __init__(self, type: Literal["challenge"], challenge: ChallengeJson):
+    def __init__(self, type: Literal["challenge"], challenge: ChallengeJson, compat: GameCompat, **kwargs):
         self.type: Literal["challenge"] = type
         self.challenge = challenge
+        self.compat = compat

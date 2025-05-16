@@ -18,7 +18,12 @@ class ChatLineEvent(JsonDeserializable):
         return cls(**obj)
 
     def __init__(
-        self, type: Literal["chatLine"], room: Literal["player", "spectator"], username: str, text: str
+        self,
+        type: Literal["chatLine"],
+        room: Literal["player", "spectator"],
+        username: str,
+        text: str,
+        **kwargs,
     ):
         self.type: Literal["chatLine"] = type
         self.room: Literal["player", "spectator"] = room

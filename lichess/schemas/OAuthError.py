@@ -15,6 +15,6 @@ class OAuthError(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, error: str, error_description: str):
+    def __init__(self, error: str, error_description: str, **kwargs):
         self.error = error
         self.error_description = error_description

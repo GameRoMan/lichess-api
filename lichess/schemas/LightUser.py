@@ -18,9 +18,17 @@ class LightUser(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, id: str, name: str, flair: Flair, title: Title, patron: bool):
+    def __init__(
+        self,
+        id: str,
+        name: str,
+        flair: Flair | None = None,
+        title: Title | None = None,
+        patron: bool | None = None,
+        **kwargs,
+    ):
         self.id = id
         self.name = name
         self.flair = flair
-        self.title: Title = title
+        self.title: Title | None = title
         self.patron = patron

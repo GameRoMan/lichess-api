@@ -15,6 +15,6 @@ class PuzzleModePerf(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, runs: int, score: int):
+    def __init__(self, runs: int, score: int, **kwargs):
         self.runs = runs
         self.score = score

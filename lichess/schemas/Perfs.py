@@ -74,6 +74,7 @@ class Perfs(JsonDeserializable):
         storm: PuzzleModePerf,
         racer: PuzzleModePerf,
         streak: PuzzleModePerf,
+        **kwargs,
     ):
         self.chess960 = chess960
         self.atomic = atomic

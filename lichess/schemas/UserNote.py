@@ -21,7 +21,7 @@ class UserNote(JsonDeserializable):
             obj["to"] = LightUser.de_json(obj.get("to"))
         return cls(**obj)
 
-    def __init__(self, from_: LightUser, to: LightUser, text: str, date: int):
+    def __init__(self, from_: LightUser, to: LightUser, text: str, date: int, **kwargs):
         self.from_ = from_
         self.to = to
         self.text = text

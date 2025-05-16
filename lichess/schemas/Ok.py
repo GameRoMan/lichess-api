@@ -15,5 +15,5 @@ class Ok(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, ok: bool):
+    def __init__(self, ok: bool, **kwargs):
         self.ok = ok

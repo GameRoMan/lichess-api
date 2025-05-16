@@ -15,7 +15,7 @@ class ArenaPerf(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, key: str, name: str, position: int, icon: str):
+    def __init__(self, key: str, name: str, position: int, icon: str | None = None, **kwargs):
         self.key = key
         self.name = name
         self.position = position

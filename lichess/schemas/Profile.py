@@ -17,17 +17,18 @@ class Profile(JsonDeserializable):
 
     def __init__(
         self,
-        flag: str,
-        location: str,
-        bio: str,
-        realName: str,
+        flag: str | None = None,
+        location: str | None = None,
+        bio: str | None = None,
+        realName: str | None = None,
         fideRating: int | None = None,
         uscfRating: int | None = None,
         ecfRating: int | None = None,
         cfcRating: int | None = None,
         rcfRating: int | None = None,
         dsbRating: int | None = None,
-        links: str = "",
+        links: str | None = None,
+        **kwargs,
     ):
         self.flag = flag
         self.location = location

@@ -21,6 +21,6 @@ class GameFinishEvent(JsonDeserializable):
             obj["game"] = GameEventInfo.de_json(obj.get("game"))
         return cls(**obj)
 
-    def __init__(self, type: Literal["gameFinish"], game: GameEventInfo):
+    def __init__(self, type: Literal["gameFinish"], game: GameEventInfo, **kwargs):
         self.type: Literal["gameFinish"] = type
         self.game = game

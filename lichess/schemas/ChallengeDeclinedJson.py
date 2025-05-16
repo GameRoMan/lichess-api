@@ -61,6 +61,7 @@ class ChallengeDeclinedJson(JsonDeserializable):
             "noBot",
             "onlyBot",
         ],
+        **kwargs,
     ):
         self.id = id
         self.url = url

@@ -17,7 +17,9 @@ class OpponentGone(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, type: Literal["opponentGone"], gone: bool, claimWinInSeconds: int):
+    def __init__(
+        self, type: Literal["opponentGone"], gone: bool, claimWinInSeconds: int | None = None, **kwargs
+    ):
         self.type: Literal["opponentGone"] = type
         self.gone = gone
         self.claimWinInSeconds = claimWinInSeconds

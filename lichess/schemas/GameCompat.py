@@ -1,11 +1,11 @@
 from ._internal import JsonDeserializable
 
 
-class Clock(JsonDeserializable):
+class GameCompat(JsonDeserializable):
     """
-    Clock
+    GameCompat
 
-    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/Clock.yaml
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/GameCompat.yaml
     """
 
     @classmethod
@@ -15,6 +15,6 @@ class Clock(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, limit: int, increment: int, **kwargs):
-        self.limit = limit
-        self.increment = increment
+    def __init__(self, bot: bool, board: bool, **kwargs):
+        self.bot = bot
+        self.board = board

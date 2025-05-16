@@ -15,7 +15,7 @@ class Perf(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, games: int, rating: int, rd: int, prog: int, prov: bool | None = None):
+    def __init__(self, games: int, rating: int, rd: int, prog: int, prov: bool | None = None, **kwargs):
         self.games = games
         self.rating = rating
         self.rd = rd

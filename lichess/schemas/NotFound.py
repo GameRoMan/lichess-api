@@ -15,5 +15,5 @@ class NotFound(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, error: str):
+    def __init__(self, error: str, **kwargs):
         self.error = error

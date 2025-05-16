@@ -28,11 +28,12 @@ class GameStateEvent(JsonDeserializable):
         winc: int,
         binc: int,
         status: GameStatus,
-        winner: str,
+        winner: str | None = None,
         wdraw: bool | None = None,
         bdraw: bool | None = None,
         wtakeback: bool | None = None,
         btakeback: bool | None = None,
+        **kwargs,
     ):
         self.type: Literal["gameState"] = type
         self.moves = moves

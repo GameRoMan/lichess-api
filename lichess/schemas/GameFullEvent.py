@@ -44,7 +44,8 @@ class GameFullEvent(JsonDeserializable):
         black: GameEventPlayer,
         initialFen: str,
         state: GameStateEvent,
-        tournamentId: str,
+        tournamentId: str | None = None,
+        **kwargs,
     ):
         self.type: Literal["gameFull"] = type
         self.id = id

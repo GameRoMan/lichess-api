@@ -20,22 +20,23 @@ class ChallengeUser(JsonDeserializable):
 
     def __init__(
         self,
-        rating: float,
-        provisional: bool,
-        online: bool,
-        lag: float,
         id: str,
         name: str,
-        flair: Flair,
-        title: Title,
-        patron: bool,
+        rating: float | None = None,
+        title: Title | None = None,
+        flair: Flair | None = None,
+        patron: bool | None = None,
+        provisional: bool | None = None,
+        online: bool | None = None,
+        lag: int | None = None,
+        **kwargs,
     ):
+        self.id = id
+        self.name = name
         self.rating = rating
+        self.title: Title | None = title
+        self.flair = flair
+        self.patron = patron
         self.provisional = provisional
         self.online = online
         self.lag = lag
-        self.id = id
-        self.name = name
-        self.flair = flair
-        self.title: Title = title
-        self.patron = patron
