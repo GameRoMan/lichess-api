@@ -16,7 +16,14 @@ class GameEventPlayer(JsonDeserializable):
         return cls(**obj)
 
     def __init__(
-        self, aiLevel: int, id: str, name: str, title: str | None, rating: int, provisional: bool, **kwargs
+        self,
+        aiLevel: int,
+        id: str,
+        name: str,
+        title: str | None,
+        rating: int,
+        provisional: bool,
+        **kwargs,
     ):
         self.aiLevel = aiLevel
         self.id = id

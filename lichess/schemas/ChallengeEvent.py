@@ -23,7 +23,11 @@ class ChallengeEvent(JsonDeserializable):
         return cls(**obj)
 
     def __init__(
-        self, type: Literal["challenge"], challenge: ChallengeJson, compat: GameCompat | None = None, **kwargs
+        self,
+        type: Literal["challenge"],
+        challenge: ChallengeJson,
+        compat: GameCompat | None = None,
+        **kwargs,
     ):
         self.type: Literal["challenge"] = type
         self.challenge = challenge
