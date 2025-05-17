@@ -1,5 +1,7 @@
 from ._internal import JsonDeserializable
 
+from .Title import Title
+
 
 class GameEventPlayer(JsonDeserializable):
     """
@@ -20,7 +22,7 @@ class GameEventPlayer(JsonDeserializable):
         aiLevel: int,
         id: str,
         name: str,
-        title: str | None,
+        title: Title | None,
         rating: int,
         provisional: bool,
         **kwargs,
@@ -28,6 +30,6 @@ class GameEventPlayer(JsonDeserializable):
         self.aiLevel = aiLevel
         self.id = id
         self.name = name
-        self.title = title
+        self.title: Title | None = title
         self.rating = rating
         self.provisional = provisional

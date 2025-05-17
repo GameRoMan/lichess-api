@@ -20,6 +20,8 @@ class ChallengeEvent(JsonDeserializable):
         obj = cls.check_json(json_string)
         if "challenge" in obj:
             obj["challenge"] = ChallengeJson.de_json(obj.get("challenge"))
+        if "compat" in obj:
+            obj["compat"] = GameCompat.de_json(obj.get("compat"))
         return cls(**obj)
 
     def __init__(

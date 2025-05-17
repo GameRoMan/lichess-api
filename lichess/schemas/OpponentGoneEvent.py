@@ -3,11 +3,11 @@ from typing import Literal
 from ._internal import JsonDeserializable
 
 
-class OpponentGone(JsonDeserializable):
+class OpponentGoneEvent(JsonDeserializable):
     """
-    OpponentGone
+    OpponentGoneEvent
 
-    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/OpponentGone.yaml
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/OpponentGoneEvent.yaml
     """
 
     @classmethod

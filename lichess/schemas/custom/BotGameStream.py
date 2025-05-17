@@ -3,7 +3,7 @@ from .._internal import JsonDeserializable
 from ..GameFullEvent import GameFullEvent
 from ..GameStateEvent import GameStateEvent
 from ..ChatLineEvent import ChatLineEvent
-from ..OpponentGone import OpponentGone
+from ..OpponentGoneEvent import OpponentGoneEvent
 
 
 class BotGameStream(JsonDeserializable):
@@ -20,6 +20,6 @@ class BotGameStream(JsonDeserializable):
             case "chatLine":
                 return ChatLineEvent.de_json(obj)
             case "opponentGone":
-                return OpponentGone.de_json(obj)
+                return OpponentGoneEvent.de_json(obj)
             case _:
                 raise Exception("Unkown Event Type")
