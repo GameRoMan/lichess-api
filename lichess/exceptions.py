@@ -5,7 +5,7 @@ class ApiException(Exception):
     """
     This class represents a base Exception thrown when a call to the Lichess API fails.
     In addition to an informative message, it has a `function_name` and a `result` attribute, which respectively
-    contain the name of the failed function and the returned result that made the function to be considered  as
+    contain the name of the failed function and the returned result that made the function to be considered as
     failed.
     """
 

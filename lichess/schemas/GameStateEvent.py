@@ -2,7 +2,7 @@ from typing import Literal
 
 from ._internal import JsonDeserializable
 
-from .GameStatus import GameStatus
+from .GameStatusName import GameStatusName
 
 
 class GameStateEvent(JsonDeserializable):
@@ -27,7 +27,7 @@ class GameStateEvent(JsonDeserializable):
         btime: int,
         winc: int,
         binc: int,
-        status: GameStatus,
+        status: GameStatusName,
         winner: str | None = None,
         wdraw: bool | None = None,
         bdraw: bool | None = None,
@@ -41,7 +41,7 @@ class GameStateEvent(JsonDeserializable):
         self.btime = btime
         self.winc = winc
         self.binc = binc
-        self.status: GameStatus = status
+        self.status: GameStatusName = status
         self.winner = winner
         self.wdraw = wdraw
         self.bdraw = bdraw

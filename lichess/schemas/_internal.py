@@ -18,6 +18,7 @@ class JsonSerializable:
         :meta private:
 
         This function must be overridden by subclasses.
+
         :return: a JSON formatted string.
         """
         raise NotImplementedError
@@ -36,6 +37,7 @@ class Dictionaryable:
         :meta private:
 
         This function must be overridden by subclasses.
+
         :return: a DICT
         """
         raise NotImplementedError
@@ -55,6 +57,7 @@ class JsonDeserializable:
         :meta private:
 
         This function must be overridden by subclasses.
+
         :return: an instance of this class created from the given json dict or string.
         """
         raise NotImplementedError

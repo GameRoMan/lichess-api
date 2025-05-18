@@ -29,6 +29,7 @@ from .Error import Error
 from .Flair import Flair
 
 from .GameEventInfo import GameEventInfo
+from .GameEventOpponent import GameEventOpponent
 from .GameEventPlayer import GameEventPlayer
 from .GameFinishEvent import GameFinishEvent
 from .GameFullEvent import GameFullEvent
@@ -37,6 +38,8 @@ from .GameSource import GameSource
 from .GameStartEvent import GameStartEvent
 from .GameStateEvent import GameStateEvent
 from .GameStatus import GameStatus
+from .GameStatusId import GameStatusId
+from .GameStatusName import GameStatusName
 from .GameUser import GameUser
 
 from .LightUser import LightUser
@@ -89,6 +92,7 @@ __all__ = [
     "Error",
     "Flair",
     "GameEventInfo",
+    "GameEventOpponent",
     "GameEventPlayer",
     "GameFinishEvent",
     "GameFullEvent",
@@ -97,6 +101,8 @@ __all__ = [
     "GameStartEvent",
     "GameStateEvent",
     "GameStatus",
+    "GameStatusId",
+    "GameStatusName",
     "GameUser",
     "LightUser",
     "NotFound",

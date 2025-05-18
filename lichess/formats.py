@@ -1,6 +1,6 @@
 from __future__ import annotations
 import json
-from typing import Any, Callable, Dict, Generic, Iterator, List, Type, TypeVar, cast
+from typing import Any, Callable, Generic, Iterator, Type, TypeVar, cast
 
 import ndjson  # type: ignore
 from requests import Response
@@ -59,7 +59,7 @@ class FormatHandler(Generic[T]):
         raise NotImplementedError
 
 
-class JsonHandler(FormatHandler[Dict[str, Any]]):
+class JsonHandler(FormatHandler[dict[str, Any]]):
     """Handle JSON data.
 
     :param str mime_type: the MIME type for the format
@@ -71,7 +71,7 @@ class JsonHandler(FormatHandler[Dict[str, Any]]):
         super().__init__(mime_type=mime_type)
         self.decoder = decoder
 
-    def parse(self, response: Response) -> Dict[str, Any]:
+    def parse(self, response: Response) -> dict[str, Any]:
         """Parse all JSON data from a response.
 
         :param response: raw response
@@ -81,7 +81,7 @@ class JsonHandler(FormatHandler[Dict[str, Any]]):
         """
         return response.json(cls=self.decoder)
 
-    def parse_stream(self, response: Response) -> Iterator[Dict[str, Any]]:
+    def parse_stream(self, response: Response) -> Iterator[dict[str, Any]]:
         """Yield the parsed data from a stream response.
 
         :param response: raw response
@@ -117,7 +117,7 @@ class PgnHandler(FormatHandler[str]):
         :type response: :class:`requests.Response`
         :return: iterator over multiple PGN texts
         """
-        lines: List[str] = []
+        lines: list[str] = []
         last_line = True
         for line in response.iter_lines():
             decoded_line = line.decode("utf-8")
@@ -150,7 +150,7 @@ TEXT = TextHandler()
 JSON = JsonHandler(mime_type="application/json")
 
 #: Handle vanilla JSON where the response is a top-level list (this is only needed bc of type checking)
-JSON_LIST = cast(FormatHandler[List[Dict[str, Any]]], JSON)
+JSON_LIST = cast(FormatHandler[list[dict[str, Any]]], JSON)
 
 #: Handles oddball LiChess JSON (normal JSON, crazy MIME type)
 LIJSON = JsonHandler(mime_type="application/vnd.lichess.v3+json")
@@ -159,7 +159,7 @@ LIJSON = JsonHandler(mime_type="application/vnd.lichess.v3+json")
 NDJSON = JsonHandler(mime_type="application/x-ndjson", decoder=ndjson.Decoder)  # type: ignore
 
 #: Handles newline-delimited JSON where the response is a top-level list (this is only needed bc of type checking, if not streaming NJDSON, the result is always a list)
-NDJSON_LIST = cast(FormatHandler[List[Dict[str, Any]]], NDJSON)
+NDJSON_LIST = cast(FormatHandler[list[dict[str, Any]]], NDJSON)
 
 #: Handles PGN
 PGN = PgnHandler()

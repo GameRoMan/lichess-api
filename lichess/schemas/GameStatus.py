@@ -1,22 +1,23 @@
-"""
-See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/GameStatus.yaml
-"""
+from ._internal import JsonDeserializable
 
-from typing import Literal
+from .GameStatusId import GameStatusId
+from .GameStatusName import GameStatusName
 
 
-GameStatus = Literal[
-    "created",
-    "started",
-    "aborted",
-    "mate",
-    "resign",
-    "stalemate",
-    "timeout",
-    "draw",
-    "outoftime",
-    "cheat",
-    "noStart",
-    "unknownFinish",
-    "variantEnd",
-]
+class GameStatus(JsonDeserializable):
+    """
+    GameStatus
+
+    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/GameStatus.yaml
+    """
+
+    @classmethod
+    def de_json(cls, json_string):
+        if json_string is None:
+            return None
+        obj = cls.check_json(json_string, dict_copy=False)
+        return cls(**obj)
+
+    def __init__(self, id: GameStatusId, name: GameStatusName, **kwargs):
+        self.id: GameStatusId = id
+        self.name: GameStatusName = name

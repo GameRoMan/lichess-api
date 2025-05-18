@@ -4,7 +4,9 @@ from ._internal import JsonDeserializable
 
 from .GameSource import GameSource
 from .GameStatus import GameStatus
+from .Variant import Variant
 from .Speed import Speed
+from .GameEventOpponent import GameEventOpponent
 from .GameCompat import GameCompat
 
 
@@ -30,13 +32,13 @@ class GameEventInfo(JsonDeserializable):
         color: Literal["white", "black"],
         lastMove: str,
         source: GameSource,
-        status: object,
-        variant: object,
+        status: GameStatus,
+        variant: Variant,
         speed: Speed,
         perf: str,
         rated: bool,
         hasMoved: bool,
-        opponent: object,
+        opponent: GameEventOpponent,
         isMyTurn: bool,
         secondsLeft: int,
         compat: GameCompat,

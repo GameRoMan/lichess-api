@@ -1,10 +1,10 @@
 from typing import Any, Callable, Generic, Iterator, Literal, LiteralString, Mapping, TypeVar, overload
 
-import requests
-
 import logging
 
 from urllib.parse import urljoin
+
+import requests
 
 
 from .formats import FormatHandler
@@ -92,7 +92,7 @@ class Requestor(Generic[T]):
                 **kwargs,
             )
         except requests.RequestException as e:
-            raise Exception(e)
+            raise Exception(e) from e
         if not response.ok:
             raise Exception(response)
 
@@ -289,10 +289,10 @@ def _check_result(api_path: LiteralString, result: requests.Response):
 
     try:
         result_json = result.json()
-    except:
+    except requests.exceptions.JSONDecodeError as e:
         if result.status_code != 200:
-            raise exceptions.ApiHTTPException(api_path, result)
+            raise exceptions.ApiHTTPException(api_path, result) from e
         else:
-            raise exceptions.ApiInvalidJSONException(api_path, result)
+            raise exceptions.ApiInvalidJSONException(api_path, result) from e
     else:
         return result_json
