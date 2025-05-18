@@ -25,12 +25,12 @@ class Simul(JsonDeserializable):
         isCreated: bool,
         isFinished: bool,
         isRunning: bool,
-        text: str,
-        estimatedStartAt: int,
-        startedAt: int,
-        finishedAt: int,
         nbApplicants: int,
         nbPairings: int,
+        text: str | None = None,
+        estimatedStartAt: int | None = None,
+        startedAt: int | None = None,
+        finishedAt: int | None = None,
         **kwargs,
     ):
         self.id = id

@@ -22,6 +22,14 @@ class GameEventInfo(JsonDeserializable):
         if json_string is None:
             return None
         obj = cls.check_json(json_string, dict_copy=False)
+        if "status" in obj:
+            obj["status"] = GameStatus.de_json(obj.get("status"))
+        if "variant" in obj:
+            obj["variant"] = Variant.de_json(obj.get("variant"))
+        if "opponent" in obj:
+            obj["opponent"] = GameEventOpponent.de_json(obj.get("opponent"))
+        if "compat" in obj:
+            obj["compat"] = GameCompat.de_json(obj.get("compat"))
         return cls(**obj)
 
     def __init__(

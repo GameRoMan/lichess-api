@@ -15,6 +15,6 @@ class Verdicts(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, accepted: bool, list: tuple[object], **kwargs):
+    def __init__(self, accepted: bool, list: tuple[object, ...], **kwargs):
         self.accepted = accepted
         self.iist = list

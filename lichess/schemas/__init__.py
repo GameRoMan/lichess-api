@@ -28,6 +28,7 @@ from .Crosstable import Crosstable
 from .Error import Error
 from .Flair import Flair
 
+from .GameCompat import GameCompat
 from .GameEventInfo import GameEventInfo
 from .GameEventOpponent import GameEventOpponent
 from .GameEventPlayer import GameEventPlayer
@@ -91,6 +92,7 @@ __all__ = [
     "Crosstable",
     "Error",
     "Flair",
+    "GameCompat",
     "GameEventInfo",
     "GameEventOpponent",
     "GameEventPlayer",

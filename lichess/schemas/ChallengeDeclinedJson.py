@@ -78,4 +78,16 @@ class ChallengeDeclinedJson(JsonDeserializable):
         self.direction: Literal["in", "out"] | None = direction
         self.initialFen = initialFen
         self.declineReason = declineReason
-        self.declineReasonKey = declineReasonKey
+        self.declineReasonKey: Literal[
+            "generic",
+            "later",
+            "tooFast",
+            "tooSlow",
+            "timeControl",
+            "rated",
+            "casual",
+            "standard",
+            "variant",
+            "noBot",
+            "onlyBot",
+        ] = declineReasonKey

@@ -23,6 +23,8 @@ class ArenaTournament(JsonDeserializable):
         if json_string is None:
             return None
         obj = cls.check_json(json_string)
+        if "clock" in obj:
+            obj["clock"] = Clock.de_json(obj.get("clock"))
         if "variant" in obj:
             obj["variant"] = Variant.de_json(obj.get("variant"))
         if "perf" in obj:

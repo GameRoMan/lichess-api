@@ -56,7 +56,7 @@ class ChallengeJson(JsonDeserializable):
         self.destUser = destUser
         self.variant = variant
         self.rated = rated
-        self.speed = speed
+        self.speed: Speed = speed
         self.timeControl = timeControl
         self.color: Literal["white", "black", "random"] = color
         self.finalColor: Literal["white", "black"] = finalColor
