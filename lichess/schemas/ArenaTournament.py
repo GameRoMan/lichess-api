@@ -41,6 +41,7 @@ class ArenaTournament(JsonDeserializable):
 
     def __init__(
         self,
+        *,
         id: str,
         createdBy: str,
         system: Literal["arena"],

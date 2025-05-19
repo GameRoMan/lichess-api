@@ -6,7 +6,7 @@ from .Title import Title
 
 class LightUser(JsonDeserializable):
     """
-    Light user
+    LightUser
 
     See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/LightUser.yaml
     """
@@ -20,6 +20,7 @@ class LightUser(JsonDeserializable):
 
     def __init__(
         self,
+        *,
         id: str,
         name: str,
         flair: Flair | None = None,

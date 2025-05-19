@@ -7,6 +7,7 @@ from .ChallengeUser import ChallengeUser
 from .Variant import Variant
 from .Speed import Speed
 from .TimeControl import TimeControl
+from .GameColor import GameColor
 
 
 class ChallengeJson(JsonDeserializable):
@@ -33,6 +34,7 @@ class ChallengeJson(JsonDeserializable):
 
     def __init__(
         self,
+        *,
         id: str,
         url: str,
         status: ChallengeStatus,
@@ -43,7 +45,7 @@ class ChallengeJson(JsonDeserializable):
         speed: Speed,
         timeControl: TimeControl,
         color: Literal["white", "black", "random"],
-        finalColor: Literal["white", "black"],
+        finalColor: GameColor | None = None,
         perf: object,
         direction: Literal["in", "out"] | None = None,
         initialFen: str | None = None,
@@ -59,7 +61,7 @@ class ChallengeJson(JsonDeserializable):
         self.speed: Speed = speed
         self.timeControl = timeControl
         self.color: Literal["white", "black", "random"] = color
-        self.finalColor: Literal["white", "black"] = finalColor
+        self.finalColor: GameColor | None = finalColor
         self.perf = perf
         self.direction: Literal["in", "out"] | None = direction
         self.initialFen = initialFen

@@ -17,6 +17,6 @@ class ArenaRatingObj(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, perf: PerfType, rating: int, **kwargs):
-        self.perf: PerfType = perf
+    def __init__(self, *, rating: int, perf: PerfType | None = None, **kwargs):
+        self.perf: PerfType | None = perf
         self.rating = rating

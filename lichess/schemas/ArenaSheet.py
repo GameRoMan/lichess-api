@@ -15,6 +15,6 @@ class ArenaSheet(JsonDeserializable):
         obj = cls.check_json(json_string, dict_copy=False)
         return cls(**obj)
 
-    def __init__(self, scores: str, fire: bool | None = None, **kwargs):
+    def __init__(self, *, scores: str, fire: bool | None = None, **kwargs):
         self.scores = scores
         self.fire = fire

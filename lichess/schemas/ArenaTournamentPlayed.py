@@ -1,6 +1,7 @@
 from ._internal import JsonDeserializable
 
 from .ArenaTournament import ArenaTournament
+from .ArenaTournamentPlayer import ArenaTournamentPlayer
 
 
 class ArenaTournamentPlayed(JsonDeserializable):
@@ -17,8 +18,10 @@ class ArenaTournamentPlayed(JsonDeserializable):
         obj = cls.check_json(json_string)
         if "tournament" in obj:
             obj["tournament"] = ArenaTournament.de_json(obj.get("tournament"))
+        if "player" in obj:
+            obj["player"] = ArenaTournamentPlayer.de_json(obj.get("player"))
         return cls(**obj)
 
-    def __init__(self, tournament: ArenaTournament, player: object, **kwargs):
+    def __init__(self, *, tournament: ArenaTournament, player: ArenaTournamentPlayer, **kwargs):
         self.tournament = tournament
         self.player = player

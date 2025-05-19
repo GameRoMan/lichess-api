@@ -1,7 +1,6 @@
-from typing import Literal
-
 from ._internal import JsonDeserializable
 
+from .GameColor import GameColor
 from .GameSource import GameSource
 from .GameStatus import GameStatus
 from .Variant import Variant
@@ -34,10 +33,11 @@ class GameEventInfo(JsonDeserializable):
 
     def __init__(
         self,
+        *,
         fullId: str,
         gameId: str,
         fen: str,
-        color: Literal["white", "black"],
+        color: GameColor,
         lastMove: str,
         source: GameSource,
         status: GameStatus,
@@ -56,7 +56,7 @@ class GameEventInfo(JsonDeserializable):
         self.fullId = fullId
         self.gameId = gameId
         self.fen = fen
-        self.color: Literal["white", "black"] = color
+        self.color: GameColor = color
         self.lastMove = lastMove
         self.source: GameSource = source
         self.status = status

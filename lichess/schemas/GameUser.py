@@ -21,14 +21,15 @@ class GameUser(JsonDeserializable):
 
     def __init__(
         self,
+        *,
         user: LightUser,
         rating: int,
-        ratingDiff: int,
-        name: str,
-        provisional: bool,
-        aiLevel: int,
-        analysis: object,
-        team: str,
+        ratingDiff: int | None = None,
+        name: str | None = None,
+        provisional: bool | None = None,
+        aiLevel: int | None = None,
+        analysis: object | None = None,
+        team: str | None = None,
         **kwargs,
     ):
         self.user = user

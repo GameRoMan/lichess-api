@@ -10,6 +10,7 @@ from .ArenaStatus import ArenaStatus
 from .ArenaStatusName import ArenaStatusName
 from .ArenaTournament import ArenaTournament
 from .ArenaTournamentPlayed import ArenaTournamentPlayed
+from .ArenaTournamentPlayer import ArenaTournamentPlayer
 from .ArenaTournaments import ArenaTournaments
 
 from .ChallengeCanceledEvent import ChallengeCanceledEvent
@@ -23,11 +24,13 @@ from .ChallengeUser import ChallengeUser
 
 from .ChatLineEvent import ChatLineEvent
 from .Clock import Clock
+from .CloudEval import CloudEval
 from .Count import Count
 from .Crosstable import Crosstable
 from .Error import Error
 from .Flair import Flair
 
+from .GameColor import GameColor
 from .GameCompat import GameCompat
 from .GameEventInfo import GameEventInfo
 from .GameEventOpponent import GameEventOpponent
@@ -43,6 +46,7 @@ from .GameStatusId import GameStatusId
 from .GameStatusName import GameStatusName
 from .GameUser import GameUser
 
+from .Leaderboard import Leaderboard
 from .LightUser import LightUser
 from .NotFound import NotFound
 from .OAuthError import OAuthError
@@ -61,8 +65,12 @@ from .SwissTournament import SwissTournament
 from .Team import Team
 from .TimeControl import TimeControl
 from .Title import Title
+from .TopUser import TopUser
 from .TvGame import TvGame
+from .UciVariant import UciVariant
+from .User import User
 from .UserNote import UserNote
+from .UserStreamer import UserStreamer
 from .Variant import Variant
 from .VariantKey import VariantKey
 from .Verdicts import Verdicts
@@ -77,6 +85,7 @@ __all__ = [
     "ArenaStatusName",
     "ArenaTournament",
     "ArenaTournamentPlayed",
+    "ArenaTournamentPlayer",
     "ArenaTournaments",
     "ChallengeCanceledEvent",
     "ChallengeDeclinedEvent",
@@ -88,10 +97,12 @@ __all__ = [
     "ChallengeUser",
     "ChatLineEvent",
     "Clock",
+    "CloudEval",
     "Count",
     "Crosstable",
     "Error",
     "Flair",
+    "GameColor",
     "GameCompat",
     "GameEventInfo",
     "GameEventOpponent",
@@ -106,6 +117,7 @@ __all__ = [
     "GameStatusId",
     "GameStatusName",
     "GameUser",
+    "Leaderboard",
     "LightUser",
     "NotFound",
     "OAuthError",
@@ -124,8 +136,12 @@ __all__ = [
     "Team",
     "TimeControl",
     "Title",
+    "TopUser",
     "TvGame",
+    "UciVariant",
+    "User",
     "UserNote",
+    "UserStreamer",
     "Variant",
     "VariantKey",
     "Verdicts",

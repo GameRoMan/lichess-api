@@ -37,6 +37,7 @@ class ArenaTournaments(JsonDeserializable):
 
     def __init__(
         self,
+        *,
         created: tuple[ArenaTournament, ...],
         started: tuple[ArenaTournament, ...],
         finished: tuple[ArenaTournament, ...],

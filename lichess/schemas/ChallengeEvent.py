@@ -26,6 +26,7 @@ class ChallengeEvent(JsonDeserializable):
 
     def __init__(
         self,
+        *,
         type: Literal["challenge"],
         challenge: ChallengeJson,
         compat: GameCompat | None = None,

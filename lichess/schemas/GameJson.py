@@ -1,11 +1,10 @@
-from typing import Literal
-
 from ._internal import JsonDeserializable
 
 from .VariantKey import VariantKey
 from .Speed import Speed
 from .GameStatusName import GameStatusName
 from .GameUser import GameUser
+from .GameColor import GameColor
 from .GameMoveAnalysis import GameMoveAnalysis
 
 
@@ -25,6 +24,7 @@ class GameJson(JsonDeserializable):
 
     def __init__(
         self,
+        *,
         id: str,
         rated: bool,
         variant: VariantKey,
@@ -36,7 +36,7 @@ class GameJson(JsonDeserializable):
         players: object,
         source: str | None = None,
         initialFen: str | None = None,
-        winner: Literal["white", "black"] | None = None,
+        winner: GameColor | None = None,
         opening: object | None = None,
         moves: str | None = None,
         pgn: str | None = None,
@@ -60,7 +60,7 @@ class GameJson(JsonDeserializable):
         self.players = players
         self.source = source
         self.initialFen = initialFen
-        self.winner: Literal["white", "black"] | None = winner
+        self.winner: GameColor | None = winner
         self.opening = opening
         self.moves = moves
         self.pgn = pgn
