@@ -1,4 +1,5 @@
-from typing import Any, Callable, Generic, Iterator, Literal, LiteralString, Mapping, TypeVar, overload
+from typing import Any, Generic, Literal, LiteralString, TypeVar, overload
+from collections.abc import Callable, Iterator, Mapping
 
 import logging
 

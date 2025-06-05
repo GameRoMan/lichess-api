@@ -1,6 +1,6 @@
-from __future__ import annotations
 import json
-from typing import Any, Callable, Generic, Iterator, Type, TypeVar, cast
+from typing import Any, Generic, TypeVar, cast
+from collections.abc import Callable, Iterator
 
 import ndjson  # type: ignore
 from requests import Response
@@ -67,7 +67,7 @@ class JsonHandler(FormatHandler[dict[str, Any]]):
     :type decoder: :class:`json.JSONDecoder`
     """
 
-    def __init__(self, mime_type: str, decoder: Type[json.JSONDecoder] = json.JSONDecoder):
+    def __init__(self, mime_type: str, decoder: type[json.JSONDecoder] = json.JSONDecoder):
         super().__init__(mime_type=mime_type)
         self.decoder = decoder
 
