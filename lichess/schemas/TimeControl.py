@@ -1,42 +1,38 @@
-from typing import Literal
+from typing import Literal, Annotated
 
-from ._internal import JsonDeserializable
+from pydantic import BaseModel, Field
 
 
-class TimeControl(JsonDeserializable):
-    """
-    TimeControl
+class ClockTimeControl(BaseModel):
+    type: Literal["clock"]
+    limit: int
+    increment: int
+    show: str
+    daysPerTurn: int | None = None
 
-    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/TimeControl.yaml
-    """
 
-    @classmethod
-    def de_json(cls, json_string):
-        if json_string is None:
-            return None
-        obj = cls.check_json(json_string, dict_copy=False)
-        return cls(**obj)
+class CorrespondenceTimeControl(BaseModel):
+    type: Literal["correspondence"]
+    daysPerTurn: int
+    limit: int | None = None  # not required here
+    increment: int | None = None
+    show: str | None = None
 
-    def __init__(
-        self,
-        type: Literal["clock", "correspondence", "unlimited"],
-        limit: int | None = None,
-        increment: int | None = None,
-        show: str | None = None,
-        daysPerTurn: int | None = None,
-        **kwargs,
-    ):
-        self.type: Literal["clock", "correspondence", "unlimited"] = type
-        match self.type:
-            case "clock":
-                if limit is None or increment is None or show is None:
-                    raise ValueError("clock time control must have limit, increment and show")
-                self.limit = limit
-                self.increment = increment
-                self.show = show
-            case "correspondence":
-                if daysPerTurn is None:
-                    raise ValueError("correspondence time control must have daysPerTurn")
-                self.daysPerTurn = daysPerTurn
-            case "unlimited":
-                pass
+
+class UnlimitedTimeControl(BaseModel):
+    type: Literal["unlimited"]
+    limit: int | None = None
+    increment: int | None = None
+    show: str | None = None
+    daysPerTurn: int | None = None
+
+
+TimeControl = Annotated[
+    ClockTimeControl | CorrespondenceTimeControl | UnlimitedTimeControl, Field(discriminator="type")
+]
+
+"""
+TimeControl
+
+See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/TimeControl.yaml
+"""

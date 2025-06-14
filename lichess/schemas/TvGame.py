@@ -1,7 +1,6 @@
 from ._internal import JsonDeserializable
 
-from .LightUser import LightUser
-from .GameColor import GameColor
+from . import LightUser, GameColor
 
 
 class TvGame(JsonDeserializable):

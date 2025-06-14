@@ -1,4 +1,4 @@
-from typing import Any, Generic, Literal, LiteralString, TypeVar, overload
+from typing import Any, Generic, Literal, TypeVar, overload
 from collections.abc import Callable, Iterator, Mapping
 
 import logging
@@ -9,13 +9,7 @@ import requests
 
 
 from .formats import FormatHandler
-from . import exceptions, utils
-
-
-API_URL = "https://lichess.org"
-
-CONNECT_TIMEOUT = 15
-READ_TIMEOUT = 30
+from . import utils
 
 
 logger = logging.getLogger("Lichess")
@@ -265,35 +259,11 @@ class Requestor(Generic[T]):
 class TokenSession(requests.Session):
     """Session capable of Lichess Personal API access token authentication.
 
-    :param token: Lichess Personal API access token, obtained from https://lichess.org/account/oauth/token
+    :param token: Lichess Personal API access token,
+                  obtained from https://lichess.org/account/oauth/token
     """
 
     def __init__(self, token: str):
         super().__init__()
         self.token = token
         self.headers = {"Authorization": f"Bearer {token}"}
-
-
-def _check_result(api_path: LiteralString, result: requests.Response):
-    """
-    Checks whether `result` is a valid API response.
-    A result is considered invalid if:
-        - The server returned an HTTP response code other than 200
-        - The content of the result is invalid JSON.
-        - The method call was unsuccessful (The JSON 'ok' field equals False)
-
-    :raises ApiException: if one of the above listed cases is applicable
-    :param api_path: The name of the method called
-    :param result: The returned result of the method request
-    :return: The result parsed to a JSON dictionary.
-    """
-
-    try:
-        result_json = result.json()
-    except requests.exceptions.JSONDecodeError as e:
-        if result.status_code != 200:
-            raise exceptions.ApiHTTPException(api_path, result) from e
-        else:
-            raise exceptions.ApiInvalidJSONException(api_path, result) from e
-    else:
-        return result_json

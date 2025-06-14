@@ -1,6 +1,6 @@
 from ._internal import JsonDeserializable
 
-from .Title import Title
+from . import Title
 
 
 class TopUser(JsonDeserializable):
@@ -21,8 +21,8 @@ class TopUser(JsonDeserializable):
         self,
         id: str,
         username: str,
-        perfs,
-        title: Title,
+        perfs: object | None = None,
+        title: Title | None = None,
         patron: bool | None = None,
         online: bool | None = None,
         **kwargs,
@@ -30,6 +30,6 @@ class TopUser(JsonDeserializable):
         self.id = id
         self.username = username
         self.perfs = perfs
-        self.title = title
+        self.title: Title | None = title
         self.patron = patron
         self.online = online

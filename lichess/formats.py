@@ -156,9 +156,10 @@ JSON_LIST = cast(FormatHandler[list[dict[str, Any]]], JSON)
 LIJSON = JsonHandler(mime_type="application/vnd.lichess.v3+json")
 
 #: Handles newline-delimited JSON
-NDJSON = JsonHandler(mime_type="application/x-ndjson", decoder=ndjson.Decoder)  # type: ignore
+NDJSON = JsonHandler(mime_type="application/x-ndjson", decoder=ndjson.Decoder)
 
-#: Handles newline-delimited JSON where the response is a top-level list (this is only needed bc of type checking, if not streaming NJDSON, the result is always a list)
+#: Handles newline-delimited JSON where the response is a top-level list
+# (this is only needed bc of type checking, if not streaming NJDSON, the result is always a list)
 NDJSON_LIST = cast(FormatHandler[list[dict[str, Any]]], NDJSON)
 
 #: Handles PGN

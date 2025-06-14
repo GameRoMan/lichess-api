@@ -1,11 +1,9 @@
-from ._internal import JsonDeserializable
+from pydantic import BaseModel
 
 
-class GameMoveAnalysis(JsonDeserializable):
+class GameMoveAnalysis(BaseModel):
     """
     GameMoveAnalysis
 
     See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/GameMoveAnalysis.yaml
     """
-
-    def __init__(self, **kwargs): ...

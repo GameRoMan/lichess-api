@@ -1,7 +1,3 @@
-"""
-See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/GameSource.yaml
-"""
-
 from typing import Literal
 
 
@@ -19,3 +15,9 @@ GameSource = Literal[
     "pool",
     "swiss",
 ]
+
+"""
+GameSource
+
+See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/GameSource.yaml
+"""

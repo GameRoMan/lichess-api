@@ -1,7 +1,3 @@
-"""
-See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/GameStatusName.yaml
-"""
-
 from typing import Literal
 
 
@@ -20,3 +16,9 @@ GameStatusName = Literal[
     "unknownFinish",
     "variantEnd",
 ]
+
+"""
+GameStatusName
+
+See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/GameStatusName.yaml
+"""

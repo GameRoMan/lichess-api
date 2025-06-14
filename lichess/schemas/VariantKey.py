@@ -1,7 +1,3 @@
-"""
-See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/VariantKey.yaml
-"""
-
 from typing import Literal
 
 
@@ -17,3 +13,9 @@ VariantKey = Literal[
     "threeCheck",
     "fromPosition",
 ]
+
+"""
+VariantKey
+
+See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/VariantKey.yaml
+"""

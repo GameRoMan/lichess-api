@@ -1,18 +1,24 @@
-from ._internal import JsonDeserializable
+from typing import Annotated, Literal
+
+from pydantic import BaseModel, HttpUrl, Field
 
 
-class ArenaPosition(JsonDeserializable):
-    """
-    ArenaPosition
+class ThematicPosition(BaseModel):
+    eco: str | None = None
+    name: str
+    fen: str
+    url: HttpUrl | None = None
 
-    See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/ArenaPosition.yaml
-    """
 
-    @classmethod
-    def de_json(cls, json_string):
-        if json_string is None:
-            return None
-        obj = cls.check_json(json_string, dict_copy=False)
-        return cls(**obj)
+class CustomPosition(BaseModel):
+    name: Literal["Custom position"]
+    fen: str
 
-    def __init__(self, **kwargs): ...
+
+ArenaPosition = Annotated[ThematicPosition | CustomPosition, Field(discriminator="name")]
+
+"""
+ArenaPosition
+
+See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/ArenaPosition.yaml
+"""

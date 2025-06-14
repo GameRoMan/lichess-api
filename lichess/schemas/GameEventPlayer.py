@@ -1,35 +1,18 @@
-from ._internal import JsonDeserializable
+from pydantic import BaseModel
 
-from .Title import Title
+from . import Title
 
 
-class GameEventPlayer(JsonDeserializable):
+class GameEventPlayer(BaseModel):
     """
     GameEventPlayer
 
     See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/GameEventPlayer.yaml
     """
 
-    @classmethod
-    def de_json(cls, json_string):
-        if json_string is None:
-            return None
-        obj = cls.check_json(json_string, dict_copy=False)
-        return cls(**obj)
-
-    def __init__(
-        self,
-        aiLevel: int,
-        id: str,
-        name: str,
-        title: Title | None,
-        rating: int,
-        provisional: bool,
-        **kwargs,
-    ):
-        self.aiLevel = aiLevel
-        self.id = id
-        self.name = name
-        self.title: Title | None = title
-        self.rating = rating
-        self.provisional = provisional
+    aiLevel: int | None = None
+    id: str
+    name: str
+    title: Title | None
+    rating: int | None = None
+    provisional: bool | None = None

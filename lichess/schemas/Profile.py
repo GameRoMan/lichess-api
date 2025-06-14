@@ -1,43 +1,21 @@
-from ._internal import JsonDeserializable
+from pydantic import BaseModel
 
 
-class Profile(JsonDeserializable):
+class Profile(BaseModel):
     """
     Profile
 
     See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/Profile.yaml
     """
 
-    @classmethod
-    def de_json(cls, json_string):
-        if json_string is None:
-            return None
-        obj = cls.check_json(json_string, dict_copy=False)
-        return cls(**obj)
-
-    def __init__(
-        self,
-        flag: str | None = None,
-        location: str | None = None,
-        bio: str | None = None,
-        realName: str | None = None,
-        fideRating: int | None = None,
-        uscfRating: int | None = None,
-        ecfRating: int | None = None,
-        cfcRating: int | None = None,
-        rcfRating: int | None = None,
-        dsbRating: int | None = None,
-        links: str | None = None,
-        **kwargs,
-    ):
-        self.flag = flag
-        self.location = location
-        self.bio = bio
-        self.realName = realName
-        self.fideRating = fideRating
-        self.uscfRating = uscfRating
-        self.ecfRating = ecfRating
-        self.cfcRating = cfcRating
-        self.rcfRating = rcfRating
-        self.dsbRating = dsbRating
-        self.links = links
+    flag: str | None = None
+    location: str | None = None
+    bio: str | None = None
+    realName: str | None = None
+    fideRating: int | None = None
+    uscfRating: int | None = None
+    ecfRating: int | None = None
+    cfcRating: int | None = None
+    rcfRating: int | None = None
+    dsbRating: int | None = None
+    links: str | None = None

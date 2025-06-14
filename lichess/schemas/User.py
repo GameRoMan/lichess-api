@@ -1,10 +1,6 @@
 from ._internal import JsonDeserializable
 
-from .Perfs import Perfs
-from .Title import Title
-from .Flair import Flair
-from .Profile import Profile
-from .PlayTime import PlayTime
+from . import Perfs, Title, Flair, Profile, PlayTime
 
 
 class User(JsonDeserializable):

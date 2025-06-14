@@ -1,7 +1,3 @@
-"""
-See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/PerfType.yaml
-"""
-
 from typing import Literal
 
 
@@ -21,3 +17,9 @@ PerfType = Literal[
     "racingKings",
     "threeCheck",
 ]
+
+"""
+PerfTypr
+
+See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/PerfType.yaml
+"""

@@ -38,6 +38,7 @@ from .GameEventPlayer import GameEventPlayer
 from .GameFinishEvent import GameFinishEvent
 from .GameFullEvent import GameFullEvent
 from .GameJson import GameJson
+from .GameMoveAnalysis import GameMoveAnalysis
 from .GameSource import GameSource
 from .GameStartEvent import GameStartEvent
 from .GameStateEvent import GameStateEvent
@@ -45,6 +46,7 @@ from .GameStatus import GameStatus
 from .GameStatusId import GameStatusId
 from .GameStatusName import GameStatusName
 from .GameUser import GameUser
+from .GameUsers import GameUsers
 
 from .Leaderboard import Leaderboard
 from .LightUser import LightUser
@@ -110,6 +112,7 @@ __all__ = [
     "GameFinishEvent",
     "GameFullEvent",
     "GameJson",
+    "GameMoveAnalysis",
     "GameSource",
     "GameStartEvent",
     "GameStateEvent",
@@ -117,6 +120,7 @@ __all__ = [
     "GameStatusId",
     "GameStatusName",
     "GameUser",
+    "GameUsers",
     "Leaderboard",
     "LightUser",
     "NotFound",

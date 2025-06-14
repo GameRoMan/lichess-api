@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "lichess-api"
-version = "0.3.3"
+version = "0.4.0"
 description = "A simple API wrapper for lichess.org"
 authors = [{ name = "GameRoMan", email = "gameromandev@gmail.com" }]
 license = { text = "MIT" }
@@ -19,7 +19,7 @@ classifiers = [
 	"Programming Language :: Python :: 3.13",
 	"License :: OSI Approved :: MIT License",
 ]
-dependencies = []
+dependencies = ["pydantic>=2.11.7"]
 
 [project.urls]
 Source = "https://github.com/gameroman/lichess-api"
@@ -28,6 +28,6 @@ Source = "https://github.com/gameroman/lichess-api"
 packages = ["lichess"]
 
 [tool.black]
-line-length = 105
+line-length = 100
 target-version = ["py310", "py311", "py312", "py313"]
 skip-magic-trailing-comma = true
