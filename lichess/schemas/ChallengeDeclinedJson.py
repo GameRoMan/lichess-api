@@ -35,13 +35,13 @@ class ChallengeDeclinedJson(BaseModel):
     declineReasonKey: Literal[
         "generic",
         "later",
-        "tooFast",
-        "tooSlow",
-        "timeControl",
+        "toofast",
+        "tooslow",
+        "timecontrol",
         "rated",
         "casual",
         "standard",
         "variant",
-        "noBot",
-        "onlyBot",
+        "nobot",
+        "onlybot",
     ]

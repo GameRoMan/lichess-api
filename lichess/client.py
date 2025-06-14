@@ -1,3 +1,4 @@
+import logging
 from typing import Literal
 from collections.abc import Iterable
 
@@ -10,6 +11,8 @@ from .formats import JSON
 
 # Base URL for the API
 API_URL = "https://lichess.org"
+
+logger = logging.getLogger(__name__)
 
 
 class LichessClient:
@@ -38,6 +41,7 @@ class LichessClient:
         events = self._requestor.get(path, stream=True)
 
         for event in events:
+            logger.debug(f"Raw incoming event: {event}")
             yield ApiStream.model_validate({"event": event}).event
 
     def stream_bot_game_state(self, game_id: str) -> Iterable[BotGameStreamEvent]:
