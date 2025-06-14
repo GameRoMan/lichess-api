@@ -4,10 +4,10 @@ build-backend = "hatchling.build"
 
 [project]
 name = "lichess-api"
-version = "0.3.2"
+version = "0.3.3"
 description = "A simple API wrapper for lichess.org"
-authors = [{name = "GameRoMan", email = "gameromandev@gmail.com"}]
-license = {text = "MIT"}
+authors = [{ name = "GameRoMan", email = "gameromandev@gmail.com" }]
+license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.10"
 keywords = ["lichess", "chess", "berserk", "bot", "api", "tools"]
@@ -22,7 +22,7 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/gameroman/lichess-api"
+Source = "https://github.com/gameroman/lichess-api"
 
 [tool.hatch.build.targets.wheel]
 packages = ["lichess"]
