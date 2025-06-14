@@ -1,6 +1,11 @@
 from pydantic import BaseModel
 
-from . import VariantKey, Speed, GameStatusName, GameUsers, GameColor, GameMoveAnalysis
+from .VariantKey import VariantKey
+from .Speed import Speed
+from .GameStatusName import GameStatusName
+from .GameUsers import GameUsers
+from .GameColor import GameColor
+from .GameMoveAnalysis import GameMoveAnalysis
 
 
 class GameJson(BaseModel):

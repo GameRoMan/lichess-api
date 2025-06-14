@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from . import GameStatusName
+from .GameStatusName import GameStatusName
 
 
 class GameStateEvent(BaseModel):

@@ -2,7 +2,13 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from . import ArenaPerf, ArenaPosition, ArenaRatingObj, ArenaStatus, Clock, LightUser, Variant
+from .ArenaPerf import ArenaPerf
+from .ArenaPosition import ArenaPosition
+from .ArenaRatingObj import ArenaRatingObj
+from .ArenaStatus import ArenaStatus
+from .Clock import Clock
+from .LightUser import LightUser
+from .Variant import Variant
 
 
 class ArenaTournament(BaseModel):

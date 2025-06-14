@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
-from . import Flair, Title
+from .Title import Title
+from .Flair import Flair
 
 
 class ChallengeUser(BaseModel):

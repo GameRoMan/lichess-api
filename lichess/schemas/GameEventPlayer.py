@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from . import Title
+from .Title import Title
 
 
 class GameEventPlayer(BaseModel):

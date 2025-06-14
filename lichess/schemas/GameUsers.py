@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from . import GameUser
+from .GameUser import GameUser
 
 
 class GameUsers(BaseModel):

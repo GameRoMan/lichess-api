@@ -2,7 +2,10 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from . import Variant, Speed, GameEventPlayer, GameStateEvent
+from .Variant import Variant
+from .Speed import Speed
+from .GameEventPlayer import GameEventPlayer
+from .GameStateEvent import GameStateEvent
 
 
 class GameFullEvent(BaseModel):

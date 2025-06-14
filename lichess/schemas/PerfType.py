@@ -19,7 +19,7 @@ PerfType = Literal[
 ]
 
 """
-PerfTypr
+PerfType
 
 See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/PerfType.yaml
 """

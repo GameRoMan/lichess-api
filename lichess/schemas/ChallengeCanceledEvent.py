@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from . import ChallengeJson
+from .ChallengeJson import ChallengeJson
 
 
 class ChallengeCanceledEvent(BaseModel):

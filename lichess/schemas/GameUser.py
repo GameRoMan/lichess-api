@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from . import LightUser
+from .LightUser import LightUser
 
 
 class GameUser(BaseModel):

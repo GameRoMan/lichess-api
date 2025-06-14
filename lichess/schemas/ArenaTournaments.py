@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from . import ArenaTournament
+from .ArenaTournament import ArenaTournament
 
 
 class ArenaTournaments(BaseModel):

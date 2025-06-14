@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
-from . import SwissStatus, Verdicts
+from .SwissStatus import SwissStatus
+from .Verdicts import Verdicts
 
 
 class SwissTournament(BaseModel):

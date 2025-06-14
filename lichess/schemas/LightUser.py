@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
-from . import Flair, Title
+from .Flair import Flair
+from .Title import Title
 
 
 class LightUser(BaseModel):

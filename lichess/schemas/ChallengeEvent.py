@@ -2,7 +2,8 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from . import ChallengeJson, GameCompat
+from .ChallengeJson import ChallengeJson
+from .GameCompat import GameCompat
 
 
 class ChallengeEvent(BaseModel):

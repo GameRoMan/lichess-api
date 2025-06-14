@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from . import VariantKey
+from .VariantKey import VariantKey
 
 
 class Variant(BaseModel):

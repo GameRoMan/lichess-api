@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from . import PerfType
+from .PerfType import PerfType
 
 
 class ArenaRatingObj(BaseModel):

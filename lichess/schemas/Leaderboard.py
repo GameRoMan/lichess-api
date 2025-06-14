@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from . import TopUser
+from .TopUser import TopUser
 
 
 class Leaderboard(BaseModel):

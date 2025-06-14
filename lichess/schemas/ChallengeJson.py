@@ -2,7 +2,12 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from . import ChallengeStatus, ChallengeUser, Variant, Speed, TimeControl, GameColor
+from .ChallengeStatus import ChallengeStatus
+from .ChallengeUser import ChallengeUser
+from .Variant import Variant
+from .Speed import Speed
+from .TimeControl import TimeControl
+from .GameColor import GameColor
 
 
 class ChallengeJson(BaseModel):

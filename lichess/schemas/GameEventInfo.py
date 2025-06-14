@@ -1,6 +1,12 @@
 from pydantic import BaseModel
 
-from . import GameColor, GameSource, GameStatus, Variant, Speed, GameEventOpponent, GameCompat
+from .GameColor import GameColor
+from .GameSource import GameSource
+from .GameStatus import GameStatus
+from .Variant import Variant
+from .Speed import Speed
+from .GameEventOpponent import GameEventOpponent
+from .GameCompat import GameCompat
 
 
 class GameEventInfo(BaseModel):

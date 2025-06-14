@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
-from . import GameStatusId, GameStatusName
+from .GameStatusId import GameStatusId
+from .GameStatusName import GameStatusName
 
 
 class GameStatus(BaseModel):

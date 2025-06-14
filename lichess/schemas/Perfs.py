@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
-from . import Perf, PuzzleModePerf
+from .Perf import Perf
+from .PuzzleModePerf import PuzzleModePerf
 
 
 class Perfs(BaseModel):
