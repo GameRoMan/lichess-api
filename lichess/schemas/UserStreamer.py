@@ -1,4 +1,12 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl, Field
+
+
+class Twitch(BaseModel):
+    channel: HttpUrl
+
+
+class Youtube(BaseModel):
+    channel: HttpUrl
 
 
 class UserStreamer(BaseModel):
@@ -8,5 +16,5 @@ class UserStreamer(BaseModel):
     See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/UserStreamer.yaml
     """
 
-    twitch: object
-    youtube: object
+    twitch: Twitch
+    youtube: Youtube = Field(alias="youTube")

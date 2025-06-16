@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "lichess-api"
-version = "0.4.0"
+version = "0.4.1"
 description = "A simple API wrapper for lichess.org"
 authors = [{ name = "GameRoMan", email = "gameromandev@gmail.com" }]
 license = { text = "MIT" }
@@ -34,3 +34,8 @@ skip-magic-trailing-comma = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.taskipy.tasks]
+build = "python -c \"import shutil; shutil.rmtree('dist', ignore_errors=True)\" && hatch build"
+publish = "twine upload -r lichess-api dist/*"
+release = "task build && task publish"

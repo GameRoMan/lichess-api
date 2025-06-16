@@ -1,4 +1,4 @@
-from . import client, schemas
+from . import client, custom, schemas
 from .client import LichessClient
 
-__all__ = ["client", "schemas", "LichessClient"]
+__all__ = ["client", "custom", "schemas", "LichessClient"]

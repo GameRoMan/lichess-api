@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Any
 
 from pydantic import BaseModel, HttpUrl, field_validator
 
@@ -29,10 +29,10 @@ class ArenaPosition(BaseModel):
 
     @field_validator("position", mode="before")
     @classmethod
-    def parse_position(cls, v):
-        if not isinstance(v, dict):
+    def parse_position(cls, v: dict[str, Any]):
+        if not isinstance(v, dict):  # type: ignore
             return v
-        if _v.get("name") == "Custom position":
+        if v.get("name") == "Custom position":
             return CustomPosition(**v)
         # fallback to ThematicPosition
         return ThematicPosition(**v)

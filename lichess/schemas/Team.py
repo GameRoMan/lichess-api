@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
-from . import Flair, LightUser
+from .Flair import Flair
+from .LightUser import LightUser
 
 
 class Team(BaseModel):

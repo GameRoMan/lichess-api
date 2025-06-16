@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
+from .Verdict import Verdict
+
 
 class Verdicts(BaseModel):
     """
@@ -9,4 +11,4 @@ class Verdicts(BaseModel):
     """
 
     accepted: bool
-    list: tuple[object, ...]
+    list: tuple[Verdict, ...]

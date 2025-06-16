@@ -1,7 +1,2 @@
-from typing import TypeVar
-
-T = TypeVar("T")
-
-
-def noop(arg: T) -> T:
+def noop[T](arg: T) -> T:
     return arg

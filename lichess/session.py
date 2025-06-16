@@ -75,21 +75,19 @@ class Requestor(Generic[T]):
             data,
             json,
         )
-        try:
-            response = self.session.request(
-                method,
-                url,
-                stream=stream,
-                params=params,
-                headers=fmt.headers,
-                data=data,
-                json=json,
-                **kwargs,
-            )
-        except requests.RequestException as e:
-            raise Exception(e) from e
-        if not response.ok:
-            raise Exception(response)
+
+        response = self.session.request(
+            method,
+            url,
+            stream=stream,
+            params=params,
+            headers=fmt.headers,
+            data=data,
+            json=json,
+            **kwargs,
+        )
+
+        response.raise_for_status()
 
         return fmt.handle(response, is_stream=stream, converter=converter)
 
