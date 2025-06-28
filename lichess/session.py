@@ -5,7 +5,7 @@ import logging
 
 from urllib.parse import urljoin
 
-import requests
+from requests import Session
 
 
 from .formats import FormatHandler
@@ -31,10 +31,10 @@ class Requestor(Generic[T]):
     :param default_fmt: default format handler to use
     """
 
-    def __init__(self, session: requests.Session, base_url: str, default_fmt: FormatHandler[T]):
-        self.session = session
-        self.base_url = base_url
-        self.default_fmt = default_fmt
+    def __init__(self, session: Session, base_url: str, default_fmt: FormatHandler[T]):
+        self.session: Session = session
+        self.base_url: str = base_url
+        self.default_fmt: FormatHandler[T] = default_fmt
 
     def request(
         self,
@@ -254,7 +254,7 @@ class Requestor(Generic[T]):
         )
 
 
-class TokenSession(requests.Session):
+class TokenSession(Session):
     """Session capable of Lichess Personal API access token authentication.
 
     :param token: Lichess Personal API access token,
@@ -263,5 +263,5 @@ class TokenSession(requests.Session):
 
     def __init__(self, token: str):
         super().__init__()
-        self.token = token
+        self.token: str = token
         self.headers = {"Authorization": f"Bearer {token}"}

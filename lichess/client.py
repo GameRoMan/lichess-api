@@ -25,8 +25,8 @@ class LichessClient:
     """
 
     def __init__(self, token: str, base_url: str = API_URL):
-        self.token = token
-        self.session = TokenSession(token)
+        self.token: str = token
+        self.session: TokenSession = TokenSession(token)
         self._requestor = Requestor(self.session, base_url or API_URL, default_fmt=JSON)
 
     def stream_incoming_events(self) -> Iterable[ApiStreamEvent]:
