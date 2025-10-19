@@ -4,10 +4,10 @@ from pydantic import BaseModel, HttpUrl, field_validator
 
 
 class ThematicPosition(BaseModel):
-    eco: str | None = None
+    eco: str
     name: str
     fen: str
-    url: HttpUrl | None = None
+    url: HttpUrl
 
 
 class CustomPosition(BaseModel):

@@ -8,6 +8,18 @@ from .GameEventPlayer import GameEventPlayer
 from .GameStateEvent import GameStateEvent
 
 
+class GameFullEventClock(BaseModel):
+    initial: int
+    "Initial time in milliseconds"
+    increment: int
+    "Increment time in milliseconds"
+
+
+class GameFullEventPerf(BaseModel):
+    name: str
+    'Translated perf name (e.g. "Classical" or "Blitz")'
+
+
 class GameFullEvent(BaseModel):
     """
     GameFullEvent
@@ -18,7 +30,7 @@ class GameFullEvent(BaseModel):
     type: Literal["gameFull"]
     id: str
     variant: Variant
-    clock: object
+    clock: GameFullEventClock
     speed: Speed
     perf: object
     rated: bool
@@ -27,4 +39,5 @@ class GameFullEvent(BaseModel):
     black: GameEventPlayer
     initialFen: str
     state: GameStateEvent
+    daysPerTurn: int | None = None
     tournamentId: str | None = None

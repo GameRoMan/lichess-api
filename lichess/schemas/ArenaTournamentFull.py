@@ -1,6 +1,7 @@
 from pydantic import BaseModel, HttpUrl
 
 from .Title import Title
+from .PatronColor import PatronColor
 from .Flair import Flair
 from .Clock import Clock
 from .ArenaSheet import ArenaSheet
@@ -52,6 +53,7 @@ class StandingPlayer(BaseModel):
     name: str
     title: Title
     patron: bool
+    patronColor: PatronColor
     flair: Flair
     rank: int
     rating: int
@@ -99,6 +101,7 @@ class PodiumElement(BaseModel):
     name: str
     title: Title
     patron: bool
+    patronColor: PatronColor
     flair: Flair
     rank: int
     rating: int
@@ -126,40 +129,40 @@ class ArenaTournamentFull(BaseModel):
 
     id: str
     fullName: str
-    rated: bool
-    spotlight: Spotlight
-    berserkable: bool
-    onlyTitled: bool
+    rated: bool | None = None
+    spotlight: Spotlight | None = None
+    berserkable: bool | None = None
+    onlyTitled: bool | None = None
     clock: Clock
-    minutes: int
-    createdBy: str
-    system: str
-    secondsToStart: int
-    secondsToFinish: int
-    isFinished: bool
-    isRecentlyFinished: bool
-    pairingsClosed: bool
-    startsAt: str
+    minutes: int | None = None
+    createdBy: str | None = None
+    system: str | None = None
+    secondsToStart: int | None = None
+    secondsToFinish: int | None = None
+    isFinished: bool | None = None
+    isRecentlyFinished: bool | None = None
+    pairingsClosed: bool | None = None
+    startsAt: str | None = None
     nbPlayers: int
-    verdicts: Verdicts
-    quote: Quote
+    verdicts: Verdicts | None = None
+    quote: Quote | None = None
     "The quote displayed on the tournament page"
-    greatPlayer: GreatPlayer
-    allowList: tuple[str, ...]
+    greatPlayer: GreatPlayer | None = None
+    allowList: tuple[str, ...] | None = None
     "List of usernames allowed to join the tournament"
-    hasMaxRating: bool
-    maxRating: ArenaRatingObj
-    minRating: ArenaRatingObj
-    minRatedGames: MinRatedGames
-    botsAllowed: bool
-    minAccountAgeInDays: int
-    perf: Perf
-    schedule: Schedule
-    description: str
-    variant: str
-    duels: Duel
-    standing: Standing
-    featured: Featured
-    podium: tuple[PodiumElement, ...]
-    stats: Stats
-    myUsername: str
+    hasMaxRating: bool | None = None
+    maxRating: ArenaRatingObj | None = None
+    minRating: ArenaRatingObj | None = None
+    minRatedGames: MinRatedGames | None = None
+    botsAllowed: bool | None = None
+    minAccountAgeInDays: int | None = None
+    perf: Perf | None = None
+    schedule: Schedule | None = None
+    description: str | None = None
+    variant: str | None = None
+    duels: Duel | None = None
+    standing: Standing | None = None
+    featured: Featured | None = None
+    podium: tuple[PodiumElement, ...] | None = None
+    stats: Stats | None = None
+    myUsername: str | None = None

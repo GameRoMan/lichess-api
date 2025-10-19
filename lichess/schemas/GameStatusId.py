@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-GameStatusId = Literal[10, 20, 25, 30, 31, 32, 33, 34, 35, 36, 37, 38, 60]
+GameStatusId = Literal[10, 20, 25, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 60]
 
 """
 GameStatusId

@@ -11,3 +11,4 @@ class GameEventOpponent(BaseModel):
     id: str
     username: str
     rating: int
+    ratingDiff: int | None = None

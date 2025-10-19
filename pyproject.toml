@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "lichess-api"
 version = "0.4.1"
 description = "A simple API wrapper for lichess.org"
-authors = [{ name = "GameRoMan", email = "gameromandev@gmail.com" }]
+authors = [{ name = "GameRoMan", email = "dev@rman.dev" }]
 license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.10"
@@ -19,7 +19,7 @@ classifiers = [
 	"Programming Language :: Python :: 3.13",
 	"License :: OSI Approved :: MIT License",
 ]
-dependencies = ["pydantic>=2.11.7"]
+dependencies = ["pydantic>=2.12.3"]
 
 [project.urls]
 Source = "https://github.com/gameroman/lichess-api"

@@ -10,5 +10,7 @@ class BroadcastGroup(BaseModel):
     See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/BroadcastGroup.yaml
     """
 
+    id: str
+    slug: str
     name: str
     tours: tuple[BroadcastGroupTour, ...]

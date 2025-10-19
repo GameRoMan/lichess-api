@@ -8,5 +8,7 @@ class BroadcastGroupTour(BaseModel):
     See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/BroadcastGroupTour.yaml
     """
 
-    name: str
     id: str
+    name: str
+    active: bool
+    live: bool

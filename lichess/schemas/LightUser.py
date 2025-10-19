@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 from .Flair import Flair
 from .Title import Title
+from .PatronColor import PatronColor
 
 
 class LightUser(BaseModel):
@@ -16,3 +17,4 @@ class LightUser(BaseModel):
     flair: Flair | None = None
     title: Title | None = None
     patron: bool | None = None
+    patronColor: PatronColor | None = None

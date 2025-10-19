@@ -71,6 +71,8 @@ from .OAuthError import OAuthError
 from .Ok import Ok
 from .OpponentGoneEvent import OpponentGoneEvent
 
+from .PatronColor import PatronColor
+
 from .Perf import Perf
 from .Perfs import Perfs
 from .PerfTop10 import PerfTop10
@@ -181,6 +183,7 @@ __all__ = [
     "OAuthError",
     "Ok",
     "OpponentGoneEvent",
+    "PatronColor",
     "Perf",
     "Perfs",
     "PerfTop10",
@@ -213,7 +216,6 @@ __all__ = [
     "UserActivityScore",
     "UserExtended",
     "UserNote",
-    "UserPreferences",
     "UserStreamer",
     "Variant",
     "VariantKey",

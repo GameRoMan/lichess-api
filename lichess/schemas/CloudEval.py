@@ -1,6 +1,19 @@
 from pydantic import BaseModel
 
 
+class NonmateVariation(BaseModel):
+    cp: int
+    moves: str
+
+
+class MateVariation(BaseModel):
+    mate: int
+    moves: str
+
+
+PositionVariation = NonmateVariation | MateVariation
+
+
 class CloudEval(BaseModel):
     """
     CloudEval
@@ -10,5 +23,5 @@ class CloudEval(BaseModel):
 
     depth: int
     fen: str
-    nodes: int
-    pvs: tuple[object, ...]
+    knodes: int
+    pvs: tuple[PositionVariation, ...]

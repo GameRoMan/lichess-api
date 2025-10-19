@@ -5,6 +5,7 @@ from .Title import Title
 from .Flair import Flair
 from .Profile import Profile
 from .PlayTime import PlayTime
+from .PatronColor import PatronColor
 
 
 class User(BaseModel):
@@ -26,4 +27,5 @@ class User(BaseModel):
     seenAt: int | None = None
     playTime: PlayTime | None = None
     patron: bool | None = None
+    patronColor: PatronColor | None = None
     verified: bool | None = None

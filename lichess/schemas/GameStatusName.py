@@ -14,6 +14,7 @@ GameStatusName = Literal[
     "cheat",
     "noStart",
     "unknownFinish",
+    "insufficientMaterialClaim",
     "variantEnd",
 ]
 

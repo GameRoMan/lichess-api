@@ -2,6 +2,8 @@ from typing import Literal
 
 from pydantic import BaseModel, HttpUrl
 
+from .LightUser import LightUser
+
 
 class BroadcastTourInfo(BaseModel):
     "Additional display information about the tournament"
@@ -50,3 +52,4 @@ class BroadcastTour(BaseModel):
     leaderboard: bool | None = None
     teamTable: bool | None = None
     url: HttpUrl
+    communityOwner: LightUser | None = None

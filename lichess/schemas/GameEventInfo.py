@@ -18,18 +18,20 @@ class GameEventInfo(BaseModel):
 
     fullId: str
     gameId: str
-    fen: str
-    color: GameColor
-    lastMove: str
-    source: GameSource
-    status: GameStatus
-    variant: Variant
-    speed: Speed
-    perf: str
-    rated: bool
-    hasMoved: bool
-    opponent: GameEventOpponent
-    isMyTurn: bool
-    secondsLeft: int
-    compat: GameCompat
-    id: str
+    fen: str | None = None
+    color: GameColor | None = None
+    lastMove: str | None = None
+    source: GameSource | None = None
+    status: GameStatus | None = None
+    variant: Variant | None = None
+    speed: Speed | None = None
+    perf: str | None = None
+    rated: bool | None = None
+    hasMoved: bool | None = None
+    opponent: GameEventOpponent | None = None
+    isMyTurn: bool | None = None
+    secondsLeft: int | None = None
+    winner: GameColor | None = None
+    ratingDiff: int | None = None
+    compat: GameCompat | None = None
+    id: str | None = None

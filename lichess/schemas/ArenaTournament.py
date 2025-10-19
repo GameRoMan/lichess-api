@@ -11,6 +11,20 @@ from .LightUser import LightUser
 from .Variant import Variant
 
 
+class MinRatedGames(BaseModel):
+    nb: int
+
+
+class Schedule(BaseModel):
+    freq: str
+    speed: str
+
+
+class TeamBattle(BaseModel):
+    teams: tuple[str, ...]
+    nbLeaders: int
+
+
 class ArenaTournament(BaseModel):
     """
     ArenaTournament
@@ -36,13 +50,13 @@ class ArenaTournament(BaseModel):
     hasMaxRating: bool | None = None
     maxRating: ArenaRatingObj | None = None
     minRating: ArenaRatingObj | None = None
-    minRatedGames: object | None = None
+    minRatedGames: MinRatedGames | None = None
     botsAllowed: bool | None = None
     minAccountAgeInDays: int | None = None
     onlyTitled: bool | None = None
     teamMember: str | None = None
     private: bool | None = None
     position: ArenaPosition | None = None
-    schedule: object | None = None
-    teamBattle: object | None = None
+    schedule: Schedule | None = None
+    teamBattle: TeamBattle | None = None
     winner: LightUser | None = None
