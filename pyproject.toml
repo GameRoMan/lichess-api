@@ -9,12 +9,10 @@ description = "A simple API wrapper for lichess.org"
 authors = [{ name = "GameRoMan", email = "dev@rman.dev" }]
 license = { text = "MIT" }
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 keywords = ["lichess", "chess", "berserk", "bot", "api", "tools"]
 classifiers = [
 	"Programming Language :: Python :: 3",
-	"Programming Language :: Python :: 3.10",
-	"Programming Language :: Python :: 3.11",
 	"Programming Language :: Python :: 3.12",
 	"Programming Language :: Python :: 3.13",
 	"License :: OSI Approved :: MIT License",
@@ -29,7 +27,7 @@ packages = ["lichess"]
 
 [tool.black]
 line-length = 100
-target-version = ["py310", "py311", "py312", "py313"]
+target-version = ["py312", "py313"]
 skip-magic-trailing-comma = true
 
 [tool.pytest.ini_options]
