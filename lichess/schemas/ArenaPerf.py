@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
+from .PerfType import PerfType
+
 
 class ArenaPerf(BaseModel):
     """
@@ -8,7 +10,7 @@ class ArenaPerf(BaseModel):
     See https://github.com/lichess-org/api/blob/master/doc/specs/schemas/ArenaPerf.yaml
     """
 
-    key: str
+    key: PerfType
     name: str
     position: int
     icon: str | None = None
