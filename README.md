@@ -1,3 +1,3 @@
 # lichess-api
 
-A simple API wrapper for lichess.org
+A simple Python wrapper for Lichess API
