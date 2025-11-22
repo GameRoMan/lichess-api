@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-VariantKey = Literal[
+type VariantKey = Literal[
     "standard",
     "chess960",
     "crazyhouse",

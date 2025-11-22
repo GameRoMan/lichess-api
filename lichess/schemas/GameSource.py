@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-GameSource = Literal[
+type GameSource = Literal[
     "lobby",
     "friend",
     "ai",

@@ -2,8 +2,8 @@ import json
 from typing import Any, Generic, TypeVar, cast
 from collections.abc import Callable, Iterator
 
-import ndjson  # type: ignore
 from requests import Response
+from .lib import ndjson
 
 from . import utils
 
@@ -25,7 +25,10 @@ class FormatHandler(Generic[T]):
         self.headers = {"Accept": mime_type}
 
     def handle(
-        self, response: Response, is_stream: bool, converter: Callable[[T], T] = utils.noop
+        self,
+        response: Response,
+        is_stream: bool,
+        converter: Callable[[T], T] = utils.noop,
     ) -> T | Iterator[T]:
         """Handle the response by returning the data.
 
@@ -67,7 +70,9 @@ class JsonHandler(FormatHandler[dict[str, Any]]):
     :type decoder: :class:`json.JSONDecoder`
     """
 
-    def __init__(self, mime_type: str, decoder: type[json.JSONDecoder] = json.JSONDecoder):
+    def __init__(
+        self, mime_type: str, decoder: type[json.JSONDecoder] = json.JSONDecoder
+    ):
         super().__init__(mime_type=mime_type)
         self.decoder = decoder
 

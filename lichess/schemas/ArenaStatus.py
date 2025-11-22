@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-ArenaStatus = Literal[10, 20, 30]
+type ArenaStatus = Literal[10, 20, 30]
 
 """
 ArenaStatus

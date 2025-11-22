@@ -9,7 +9,7 @@ from ..schemas import (
 )
 
 
-ApiStreamEvent = (
+type ApiStreamEvent = (
     GameStartEvent
     | GameFinishEvent
     | ChallengeEvent

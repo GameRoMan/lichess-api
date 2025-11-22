@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-Flair = str | Literal["activity.chess"]
+type Flair = str | Literal["activity.chess"]
 
 """
 Flair

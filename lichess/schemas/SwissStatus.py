@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-SwissStatus = Literal["created", "started", "finished"]
+type SwissStatus = Literal["created", "started", "finished"]
 
 """
 SwissStatus

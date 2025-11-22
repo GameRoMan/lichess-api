@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-ChallengeStatus = Literal["created", "offline", "canceled", "declined", "accepted"]
+type ChallengeStatus = Literal["created", "offline", "canceled", "declined", "accepted"]
 
 """
 ChallengeStatus

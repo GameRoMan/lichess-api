@@ -15,7 +15,7 @@ class CustomPosition(BaseModel):
     fen: str
 
 
-ArenaPositionUnion = ThematicPosition | CustomPosition
+type ArenaPositionUnion = ThematicPosition | CustomPosition
 
 
 class ArenaPosition(BaseModel):

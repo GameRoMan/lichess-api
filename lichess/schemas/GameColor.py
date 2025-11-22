@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-GameColor = Literal["white", "black"]
+type GameColor = Literal["white", "black"]
 
 """
 GameColor

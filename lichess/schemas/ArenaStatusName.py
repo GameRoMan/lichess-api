@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-ArenaStatusName = Literal["created", "started", "finished"]
+type ArenaStatusName = Literal["created", "started", "finished"]
 
 """
 ArenaStatusName

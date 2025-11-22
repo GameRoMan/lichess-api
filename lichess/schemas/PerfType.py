@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-PerfType = Literal[
+type PerfType = Literal[
     "ultraBullet",
     "bullet",
     "blitz",

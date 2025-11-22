@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-BroadcastTiebreakExtendedCode = Literal[
+type BroadcastTiebreakExtendedCode = Literal[
     "AOB",
     "APPO",
     "APRO",

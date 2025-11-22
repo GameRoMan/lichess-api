@@ -6,7 +6,7 @@ class GameChatMessage(BaseModel):
     user: str
 
 
-GameChat = tuple[GameChatMessage, ...] | tuple[GameChatMessage]
+type GameChat = tuple[GameChatMessage, ...] | tuple[GameChatMessage]
 
 """
 GameChat

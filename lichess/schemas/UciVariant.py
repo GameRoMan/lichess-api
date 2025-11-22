@@ -1,8 +1,15 @@
 from typing import Literal
 
 
-UciVariant = Literal[
-    "chess", "crazyhouse", "antichess", "atomic", "horde", "kingofthehill", "racingkings", "3check"
+type UciVariant = Literal[
+    "chess",
+    "crazyhouse",
+    "antichess",
+    "atomic",
+    "horde",
+    "kingofthehill",
+    "racingkings",
+    "3check",
 ]
 
 """

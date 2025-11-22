@@ -1,7 +1,7 @@
 from typing import Literal
 
 
-GameStatusName = Literal[
+type GameStatusName = Literal[
     "created",
     "started",
     "aborted",

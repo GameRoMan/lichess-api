@@ -1,4 +1,4 @@
-GamePgn = str
+type GamePgn = str
 
 """
 GamePgn

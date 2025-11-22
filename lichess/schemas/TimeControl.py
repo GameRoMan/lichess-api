@@ -27,8 +27,9 @@ class UnlimitedTimeControl(BaseModel):
     daysPerTurn: int | None = None
 
 
-TimeControl = Annotated[
-    ClockTimeControl | CorrespondenceTimeControl | UnlimitedTimeControl, Field(discriminator="type")
+type TimeControl = Annotated[
+    ClockTimeControl | CorrespondenceTimeControl | UnlimitedTimeControl,
+    Field(discriminator="type"),
 ]
 
 """

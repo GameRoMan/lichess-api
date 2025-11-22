@@ -1,8 +1,17 @@
 from .TopUser import TopUser
 
 
-PerfTop10 = tuple[
-    TopUser, TopUser, TopUser, TopUser, TopUser, TopUser, TopUser, TopUser, TopUser, TopUser
+type PerfTop10 = tuple[
+    TopUser,
+    TopUser,
+    TopUser,
+    TopUser,
+    TopUser,
+    TopUser,
+    TopUser,
+    TopUser,
+    TopUser,
+    TopUser,
 ]
 
 """

@@ -1,7 +1,9 @@
 from typing import Literal
 
 
-Title = Literal["GM", "WGM", "IM", "WIM", "FM", "WFM", "NM", "CM", "WCM", "WNM", "LM", "BOT"]
+type Title = Literal[
+    "GM", "WGM", "IM", "WIM", "FM", "WFM", "NM", "CM", "WCM", "WNM", "LM", "BOT"
+]
 
 """
 Title
